@@ -3,7 +3,8 @@ import { fade_img_in, fade_img_out } from "./index.js";
 // Constants
 const landing_background_images = [
 	"../public/images/melbourne-night.jpg",
-	"../public/images/murray-river-night.jpeg"
+	"../public/images/woodside.jpg",
+	"../public/images/murray-river-night.jpeg",
 ]
 
 // Functions
