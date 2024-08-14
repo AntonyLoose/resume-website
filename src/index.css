@@ -1,0 +1,75 @@
+:root {
+	--text: #FFFFFF;
+	--background: #35333B;
+}
+
+@font-face {
+	font-family: "cyber-punk";
+	src: url("./public/fonts/Nasa21-l23X.ttf");
+}
+
+body {
+	margin: 0px;
+	color: var(--text);
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif;
+	background-color: var(--background);
+}
+
+main {
+	width: 100vw;
+	height: 100vh;
+}
+
+
+.bg-img {
+	opacity: 1;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	object-fit: cover;
+}
+
+.title {
+	font-family: "cyber-punk";
+	margin-top: 0px;
+	font-size: 80px;
+}
+
+.h-centred-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.low-container {
+	position: absolute;
+	bottom: 33%;
+	left: 50%;
+	transform: translate(-50%);
+}
+
+.h-stack {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 20px;
+}
+
+.link {
+	text-decoration: none;
+	color: var(--text);
+	opacity: 0.6;
+	transition: opacity 0.3s ease;
+}
+
+.links-container {
+	width: 500px;
+}
+
+.link:hover {
+	opacity: 0.9;
+}
+
+.link:active {
+	opacity: 1;
+}
