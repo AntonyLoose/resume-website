@@ -1,5 +1,6 @@
 import { check_intersecting_rectangles } from "./index.js";
 
+// TODO: review this
 class Star {
 	#_opacity = 0;
 	#_max_opacity = 0.6;
@@ -7,6 +8,7 @@ class Star {
 	#_vy = 0;
 	#_ax = 0;
 	#_ay = 0;
+	// FIXME: why does increasing and reducing friction do the same thing?
 	#_friction = 2.0;
 	#_elapsed_time = 0;
 	#_faded_in = false;
@@ -93,12 +95,11 @@ class Star {
 		this.#_vy = this.#_vy + ay * this.#_tick_inrement;
 	}
 
-	deaccelerate(ax, ay) {
-		// TODO: make this work properly
-		this.#_ax = ax;
-		this.#_ay = ay;
-		this.#_vx = this.#_vx - ax * this.#_tick_inrement;
-		this.#_vy = this.#_vy - ay * this.#_tick_inrement;
+	deaccelerate() {
+		this.#_ax = this.#_ax / this.#_friction;
+		this.#_ay = this.#_ay / this.#_friction;
+		this.#_vx = this.#_vx - this.#_ax * this.#_tick_inrement;
+		this.#_vy = this.#_vy - this.#_ay * this.#_tick_inrement;
 	}
 
 	tick() {
@@ -107,14 +108,13 @@ class Star {
 		} else if (this.#_elapsed_time - this.#_fade_in_time >= this.#_life_time) {
 			this.#_fade_out();
 		}
-		this.#_ax = this.#_ax / this.#_friction;
-		this.#_ay = this.#_ay / this.#_friction;
 		this.deaccelerate(this.#_ax, this.#_ay);
 		this.#_update_xy();
 		this.#_elapsed_time += this.#_tick_inrement;
 	}
 }
 
+// TODO: review this
 function generate_random_star() {
 	const doc_width = document.documentElement.offsetWidth;
 	const doc_height = document.documentElement.offsetHeight;
@@ -144,6 +144,7 @@ function generate_random_star() {
 	}
 }
 
+// TODO: review this
 function apply_gravity(star, mouse_x, mouse_y, mouse_box_size, multiplier = 1) {
 	const mouse_x1 = mouse_x - mouse_box_size / 2;
 	const mouse_y1 = mouse_y - mouse_box_size / 2;
@@ -169,26 +170,19 @@ function apply_gravity(star, mouse_x, mouse_y, mouse_box_size, multiplier = 1) {
 	const ay = y_diff / (mouse_box_size / 2);
 	if (intersecting) {
 		star.accelerate(ax * multiplier, ay * multiplier);
-		star.element.style.backgroundColor = "red";
-	} else {
-		star.element.style.backgroundColor = "white";
 	}
 }
 
+// TODO: clean this up
 let mouse_y = 0;
 let mouse_x = 0;
-const mouse_box_size = 200;
-const test_rect = document.createElement("div");
-test_rect.style.border = "2px solid red";
-test_rect.style.height = mouse_box_size + "px";
-test_rect.style.width = mouse_box_size + "px";
-test_rect.style.position = "absolute";
-document.documentElement.appendChild(test_rect);
+const mouse_box_size = 300;
 document.addEventListener("mousemove", event => {
 	mouse_x = event.clientX;
 	mouse_y = event.clientY;
 })
 
+// TODO: clean this up
 const tick_increment = 10;
 const container = document.getElementById("experiences-root");
 const max_stars = 30;
@@ -196,8 +190,6 @@ let stars = [];
 let elapsed = 0;
 
 setInterval(() => {
-	test_rect.style.top = mouse_y - mouse_box_size / 2 + "px";
-	test_rect.style.left = mouse_x - mouse_box_size / 2 + "px";
 	stars.forEach(star => {
 		apply_gravity(
 			star,
@@ -212,34 +204,3 @@ setInterval(() => {
 	}
 	elapsed += tick_increment;
 }, tick_increment)
-
-// setInterval(() => {
-// const mouse_box_size = 200;
-// stars = stars.map(star => {
-// const intersecting = check_intersecting_rectangles(
-// star_x1,
-// star_y1,
-// star_x2,
-// star_y2,
-// mouse_x1,
-// mouse_y1,
-// mouse_x2,
-// mouse_y2,
-// )
-// if (intersecting) {
-// const { x_shift, y_shift } = calculate_xy_shift(
-// mouse_x,
-// mouse_y,
-// star.x,
-// star.y,
-// mouse_box_size,
-// mouse_box_size
-// );
-// star.x = star.x + x_shift;
-// star.y = star.y + y_shift;
-// star.element.style.top = star.y + "px";
-// star.element.style.left = star.x + "px";
-// }
-// return star;
-// })
-// }, 10);
