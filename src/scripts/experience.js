@@ -1,21 +1,21 @@
-import { check_intersecting_rectangles } from "./index.js";
-
 // TODO: review this
 class Star {
 	#_opacity = 0;
 	#_max_opacity = 0.6;
 	#_vx = 0;
 	#_vy = 0;
-	#_ax = 0;
-	#_ay = 0;
-	// FIXME: why does increasing and reducing friction do the same thing?
-	#_friction = 2.0;
+	#_terminal_velocity = 50;
+	// this is sort of a cut off, otherwise the increment just keeps getting smaller and smaller
+	#_min_velocity = 0.2;
+	#_slipperiness = 0.2;
 	#_elapsed_time = 0;
 	#_faded_in = false;
 	#_x;
 	#_y;
 	#_width;
 	#_height;
+	#_mass;
+	#_density = 2;
 	#_element;
 	#_life_time;
 	#_tick_inrement;
@@ -40,6 +40,7 @@ class Star {
 		this.#_element.style.width = width + "px";
 		this.#_element.style.height = height + "px";
 		this.#_element.style.opacity = "0";
+		this.#_mass = (width * height) * this.#_density;
 		container.appendChild(this.#_element);
 	}
 
@@ -57,6 +58,10 @@ class Star {
 
 	get height() {
 		return this.#_height;
+	}
+
+	get mass() {
+		return this.#_mass;
 	}
 
 	get element() {
@@ -81,6 +86,32 @@ class Star {
 		}
 	}
 
+	// update_vx & update_vy attempt to simulate air resistance (also without a terminal velocity these stars can
+	// get extremely fast)
+	#_update_vx(vx) {
+		if (vx < this.#_min_velocity && vx > -this.#_min_velocity) {
+			this.#_vx = 0;
+		} else if (vx > this.#_terminal_velocity) {
+			this.#_vx = this.#_terminal_velocity;
+		} else if (vx < -this.#_terminal_velocity) {
+			this.#_vx = -this.#_terminal_velocity
+		} else {
+			this.#_vx = vx;
+		}
+	}
+
+	#_update_vy(vy) {
+		if (vy < this.#_min_velocity && vy > -this.#_min_velocity) {
+			this.#_vy = 0;
+		} else if (vy > this.#_terminal_velocity) {
+			this.#_vy = this.#_terminal_velocity;
+		} else if (vy < -this.#_terminal_velocity) {
+			this.#_vy = -this.#_terminal_velocity
+		} else {
+			this.#_vy = vy;
+		}
+	}
+
 	#_update_xy() {
 		this.#_x += this.#_vx;
 		this.#_y += this.#_vy;
@@ -88,27 +119,34 @@ class Star {
 		this.#_element.style.top = this.#_y + "px";
 	}
 
-	accelerate(ax, ay) {
-		this.#_ax += ax;
-		this.#_ay += ay;
-		this.#_vx = this.#_vx + ax * this.#_tick_inrement;
-		this.#_vy = this.#_vy + ay * this.#_tick_inrement;
+	#_apply_friction() {
+		const fx = this.#_vx / (1 + this.#_slipperiness);
+		const fy = this.#_vy / (1 + this.#_slipperiness);
+		// this ensures that we stop in a reasonable time
+		const constant_speed_loss_due_to_friction = this.#_slipperiness / 10;
+		this.apply_force(-fx, -fy);
+		if (this.#_vx != 0) {
+			this.#_update_vx(this.#_vx -= (this.#_vx > 0 ? constant_speed_loss_due_to_friction : -constant_speed_loss_due_to_friction));
+		}
+		if (this.#_vy != 0) {
+			this.#_update_vy(this.#_vy -= (this.#_vy ? constant_speed_loss_due_to_friction : -constant_speed_loss_due_to_friction));
+		}
 	}
 
-	deaccelerate() {
-		this.#_ax = this.#_ax / this.#_friction;
-		this.#_ay = this.#_ay / this.#_friction;
-		this.#_vx = this.#_vx - this.#_ax * this.#_tick_inrement;
-		this.#_vy = this.#_vy - this.#_ay * this.#_tick_inrement;
+	apply_force(fx, fy) {
+		const ax = fx / this.#_mass;
+		const ay = fy / this.#_mass;
+		this.#_update_vx(this.#_vx + ax * this.#_tick_inrement);
+		this.#_update_vy(this.#_vy + ay * this.#_tick_inrement);
 	}
 
 	tick() {
 		if (!this.#_faded_in) {
 			this.#_fade_in();
 		} else if (this.#_elapsed_time - this.#_fade_in_time >= this.#_life_time) {
-			this.#_fade_out();
+			// this.#_fade_out();
 		}
-		this.deaccelerate(this.#_ax, this.#_ay);
+		this.#_apply_friction();
 		this.#_update_xy();
 		this.#_elapsed_time += this.#_tick_inrement;
 	}
@@ -145,45 +183,32 @@ function generate_random_star() {
 }
 
 // TODO: review this
-function apply_gravity(star, mouse_x, mouse_y, mouse_box_size, multiplier = 1) {
-	const mouse_x1 = mouse_x - mouse_box_size / 2;
-	const mouse_y1 = mouse_y - mouse_box_size / 2;
-	const mouse_x2 = mouse_x + mouse_box_size / 2;
-	const mouse_y2 = mouse_y + mouse_box_size / 2;
-	const star_x1 = star.x - star.width / 2;
-	const star_y1 = star.y - star.height / 2;
-	const star_x2 = star.x + star.width / 2;
-	const star_y2 = star.y + star.height / 2;
-	const intersecting = check_intersecting_rectangles(
-		star_x1,
-		star_y1,
-		star_x2,
-		star_y2,
-		mouse_x1,
-		mouse_y1,
-		mouse_x2,
-		mouse_y2,
-	)
-	const x_diff = star.x - mouse_x;
-	const y_diff = star.y - mouse_y;
-	const ax = x_diff / (mouse_box_size / 2);
-	const ay = y_diff / (mouse_box_size / 2);
-	if (intersecting) {
-		star.accelerate(ax * multiplier, ay * multiplier);
+function apply_gravity(star, mouse_x, mouse_y, mouse_mass = 500, grav_field_size = 300) {
+	const gravitational_constant = 0.5;
+	const rx = mouse_x - star.x;
+	const ry = mouse_y - star.y;
+	const r = Math.sqrt(rx ** 2 + ry ** 2);
+	let fx = (gravitational_constant * mouse_mass * star.mass * rx) / (r ** 3);
+	let fy = (gravitational_constant * mouse_mass * star.mass * ry) / (r ** 3);
+	if (rx > grav_field_size / 2 || rx < -(grav_field_size / 2)) {
+		fx = 0;
 	}
+	if (ry > grav_field_size / 2 || ry < -(grav_field_size / 2)) {
+		fy = 0;
+	}
+	star.apply_force(fx, fy);
 }
 
 // TODO: clean this up
 let mouse_y = 0;
 let mouse_x = 0;
-const mouse_box_size = 300;
 document.addEventListener("mousemove", event => {
 	mouse_x = event.clientX;
 	mouse_y = event.clientY;
 })
 
 // TODO: clean this up
-const tick_increment = 10;
+const tick_increment = 100;
 const container = document.getElementById("experiences-root");
 const max_stars = 30;
 let stars = [];
@@ -194,8 +219,7 @@ setInterval(() => {
 		apply_gravity(
 			star,
 			mouse_x,
-			mouse_y,
-			mouse_box_size
+			mouse_y
 		)
 		star.tick();
 	});
