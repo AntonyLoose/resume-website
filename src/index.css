@@ -27,8 +27,9 @@
 	background-color: rgba(90, 90, 110, 0.5);
 }
 
-html {
-	height: 100%;
+html,
+body {
+	height: fit-content;
 }
 
 body {
@@ -120,8 +121,10 @@ main {
 
 .experience-content {
 	width: 100%;
-	height: 100vh;
-	overflow-y: scroll;
+	height: fit-content;
+	position: relative;
+	overflow-x: hidden;
+	overflow-y: hidden;
 	padding: 40px;
 	box-sizing: border-box;
 }
@@ -130,6 +133,13 @@ main {
 	margin: auto;
 	margin-top: 10%;
 	width: 60%;
+}
+
+.stars-container {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	position: absolute;
 }
 
 .star {

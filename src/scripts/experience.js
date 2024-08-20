@@ -212,8 +212,8 @@ function apply_gravity(
 let mouse_y = 0;
 let mouse_x = 0;
 document.addEventListener("mousemove", event => {
-	mouse_x = event.clientX;
-	mouse_y = event.clientY;
+	mouse_x = event.clientX + window.scrollX;
+	mouse_y = event.clientY + window.scrollY;
 })
 
 // TODO: clean this up
