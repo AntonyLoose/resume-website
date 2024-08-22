@@ -14,36 +14,85 @@
 		<div class="experiences-container">
 			<a class="back-link" href="./landing.html">&#8592 Home</a>
 			<h1 class="title">Experience</h1>
-			<div class="h-stack">
+			<div class="h-stack-wrap">
 				<p class="subscript">Dec 2023 - Present &ensp; &middot; &ensp; Monash University,
 					Casual Research Officer </p>
 			</div>
 			<div class="h-stack">
 				<div class="vertical-divider"></div>
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<p>
-					Hello world
-				</p>
+				<div>
+					<p class="subscript marginless">ABOUT THE PROJECT</p>
+					<p>
+						In December 2023 I started developing an Auslan spell
+						generation package for Monash University's department of Human Centred
+						Computing. The package translates text prompts into interactive 3D
+						animations,
+						engaging the user and enhancing the learning experience.
+
+						As this project is an npm package, it can be integrated into any
+						website.
+						We are still in the process of alpha testing; thus I cannot
+						include a live demo on this website; however, I am optimistic this
+						should change
+						in the near future, so bookmark this website if you are interested :)
+						<br>
+						<br>
+						By default the package includes UI controls (that can be hidden using
+						the API) which allow users to interact with the 3D models (play/pause,
+						speed multipliers, scrubbing, camera controls). However, the hands can
+						also be programatically controlled through an API, providing granular
+						control over the animations. Additionally, all styles can be overriden
+						by developers using the package; for simplicity there is also the option
+						to only provide a colour theme.
+						<br>
+						<br>
+						The package was designed to be highly configurable, allowing any
+						developer to make it work for their usecase. Additionally, for when
+						configuration fails, the package is highly extendable, meaning if a
+						feature does not exist you can either fork the repository, or make a PR.
+						<br>
+						<br>
+						Plans for the future include: integrating the package into
+						<a class="link" href="https://auslan.org.au/">Sign Bank</a>, supporting
+						more langauges, and creating a finger spelling learning web app.
+					</p>
+					<p>Tech stack:</p>
+					<ul>
+						<li>Three.js</li>
+						<li>TypeScript</li>
+						<li>HTML</li>
+						<li>CSS</li>
+						<li>Nectar (a research cloud)</li>
+						<li>NGINX</li>
+					</ul>
+					<br>
+					<p class="subscript">ABOUT ME</p>
+					<p>
+						I think the key skill I developed working on this project was
+						architecture design; specifically, the design of a modular,
+						maintainable, and extendable codebase. A tangible example of this design
+						approach is the hands controller, an interface used to interact with the
+						3D models. Dependency injection is applied to make adding new
+						controllers convenient, this is crucial as different file types -
+						<code>.gltf</code>, <code>.dae</code>, etc - require separate
+						implementations.
+
+					</p>
+					<p>Skills developed:</p>
+					<ul>
+						<li>Project management</li>
+						<li>Time management</li>
+						<li>Self code review</li>
+						<li>Architecture design</li>
+						<li>Repository management (consistent commit msgs, code formatting, PRs,
+							etc)</li>
+					</ul>
+					<br>
+					<p class="subscript">REFERENCES</p>
+					<br>
+				</div>
 			</div>
-			<div class="h-stack">
+			<div class="h-stack-wrap">
 				<p class="subscript">Nov 2023 - Aug 2024 &ensp; &middot; &ensp; iLearn
 					Education, Frontend Developer</p>
 			</div>
@@ -53,7 +102,7 @@
 					Hello world
 				</p>
 			</div>
-			<div class="h-stack">
+			<div class="h-stack-wrap">
 				<p class="subscript">Feb 2023 - Oct 2023 &ensp; &middot; &ensp; Monash
 					University, Software Industry Experience Studio Project (FIT4002)</p>
 			</div>
@@ -63,7 +112,7 @@
 					Hello world
 				</p>
 			</div>
-			<div class="h-stack">
+			<div class="h-stack-wrap">
 				<p class="subscript">Oct 2018 - Nov 2023 &ensp; &middot; &ensp; Woolworths,
 					Night Filler & Deli Clerk</p>
 			</div>
