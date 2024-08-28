@@ -2,6 +2,7 @@
 	--text: #E3E3E3;
 	--background: #35333B;
 	--subscript: #BFBFBF;
+	--code-background: #595959;
 
 }
 
@@ -53,6 +54,18 @@ p {
 
 li+li {
 	margin-top: 10px;
+}
+
+video {
+	border-radius: 10px;
+	margin-bottom: 10px;
+}
+
+code {
+	padding: 5px;
+	background-color: var(--code-background);
+	border-radius: 3px;
+	opacity: 0.8;
 }
 
 .bg-img {

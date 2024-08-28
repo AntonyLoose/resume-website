@@ -21,29 +21,27 @@
 			<div class="h-stack">
 				<div class="vertical-divider"></div>
 				<div>
+					<video width="100%" height="auto" controls>
+						<source src="../public/videos/tmp-auslan-demo.webm" type="video/webm" />
+					</video>
 					<p class="subscript marginless">ABOUT THE PROJECT</p>
 					<p>
 						In December 2023 I started developing an Auslan spell
 						generation package for Monash University's department of Human Centred
 						Computing. The package translates text prompts into interactive 3D
-						animations,
-						engaging the user and enhancing the learning experience.
-
-						As this project is an npm package, it can be integrated into any
-						website.
-						We are still in the process of alpha testing; thus I cannot
-						include a live demo on this website; however, I am optimistic this
-						should change
+						animations, engaging the user and enhancing the learning experience. As
+						this project is an npm package, it can be integrated into any website.
+						We are still in the process of alpha testing; thus I cannot include a
+						live demo in this website; however, I am optimistic this should change
 						in the near future, so bookmark this website if you are interested :)
 						<br>
 						<br>
 						By default the package includes UI controls (that can be hidden using
-						the API) which allow users to interact with the 3D models (play/pause,
-						speed multipliers, scrubbing, camera controls). However, the hands can
-						also be programatically controlled through an API, providing granular
-						control over the animations. Additionally, all styles can be overriden
-						by developers using the package; for simplicity there is also the option
-						to only provide a colour theme.
+						the API) which allow users to interact with the 3D models. The
+						hands can also be programatically controlled through the API, providing
+						granular control over the animations. Additionally, all styles can be
+						overriden by developers using the package; for simplicity there is also
+						the option to only provide a colour theme.
 						<br>
 						<br>
 						The package was designed to be highly configurable, allowing any
@@ -54,31 +52,53 @@
 						<br>
 						Plans for the future include: integrating the package into
 						<a class="link" href="https://auslan.org.au/">Sign Bank</a>, supporting
-						more langauges, and creating a finger spelling learning web app.
+						more langauges, and creating an educational finger spelling web app.
 					</p>
-					<p>Tech stack:</p>
+					<p><b>Tech stack:</b></p>
 					<ul>
 						<li>Three.js</li>
 						<li>TypeScript</li>
 						<li>HTML</li>
 						<li>CSS</li>
+						<li>npm</li>
 						<li>Nectar (a research cloud)</li>
-						<li>NGINX</li>
+						<li>nginx</li>
+						<li>Linux (Ubuntu)</li>
 					</ul>
 					<br>
 					<p class="subscript">ABOUT ME</p>
 					<p>
-						I think the key skill I developed working on this project was
-						architecture design; specifically, the design of a modular,
-						maintainable, and extendable codebase. A tangible example of this design
-						approach is the hands controller, an interface used to interact with the
-						3D models. Dependency injection is applied to make adding new
-						controllers convenient, this is crucial as different file types -
-						<code>.gltf</code>, <code>.dae</code>, etc - require separate
-						implementations.
-
+						This was my first time creating a package for other developers to use;
+						it forced me to think carefully about how others would use the code, and
+						thus how the API should be designed to accomodate these users. I believe
+						this experience greatly improved my ability to design software
+						architecture, as well as differentiate between good and bad design.
+						Notably the package is ~2500 lines of code, this is significantly less
+						than other projects I have completed; however, the effort spent on each
+						line is much greater, I dedicated time to code reviews and analysis to
+						simplify and reduce the code base as less code is better, this is
+						especially true for packages - I'm probably not going to use your
+						package if it increases cold load times. Speaking of code reviews, I
+						also learned a lot about the workflow and development cycle that works
+						well for me - create janky but working iterations of features to get an
+						idea of the problem space, design a more elegant solution, bring the
+						design to life with code, review, and finalise. A specific example of
+						this approach, that I am proud of, is the code for handling animations.
+						I had programmed a simple solution that worked for most cases but had a
+						some major issues, this first iteration helped me understand the problem
+						and brainstorm solutions. Eventually I created a datastructure and class
+						that handled the animations perfectly, even allowing me to scrub the
+						animation (similar to a youtube video) this is especially cool because
+						we are playing and blending multiple animations, so something like
+						<code>mixer.update(seconds)</code> (the usual approach) would not work
+						as the blending would break.
+						<br>
+						<br>
+						The last thing I will say is that I really enjoyed working on this
+						project as it became clear that my years of study and work have
+						culminated in, if I do say so myself, a rather good programmer.
 					</p>
-					<p>Skills developed:</p>
+					<p><b>Skills developed:</b></p>
 					<ul>
 						<li>Project management</li>
 						<li>Time management</li>
@@ -89,6 +109,11 @@
 					</ul>
 					<br>
 					<p class="subscript">REFERENCES</p>
+					<p>Dr. Kalin Stefanov, ARC DECRA Fellow &middot; Supervisor, Chief Investigator
+						<br>
+						<span class="marginless subscript">kalin.stefanov@monash.edu &middot;
+							0450847590</span>
+					</p>
 					<br>
 				</div>
 			</div>
@@ -98,9 +123,63 @@
 			</div>
 			<div class="h-stack">
 				<div class="vertical-divider"></div>
-				<p>
-					Hello world
-				</p>
+				<div>
+					<p class="subscript">ABOUT THE PROJECT</p>
+					<p>
+						Soon after I resigned from my position at Woolworths I began work on the
+						frontend for <a class="link"
+							href="https://ilearneducation.com.au/">iLearn Education</a>.
+						iLearn Education provides in person tutoring services; however, they
+						wanted to expand to online courses where students could practice for
+						NAPLAN exams, and scholarship & entry tests; the website allows students
+						to view their results and compare to other students to get an idea of
+						where they would place for the official tests. Additionally, the website
+						posts blogs to inform parents of the actions they can take to give their
+						child the best chance for success.
+					</p>
+					<p>
+						This project was the first where I designed (alone) the frontend
+						architecture, in the process I made a few technical mistakes that came
+						from an overzealous attempt to apply programming principles & patterns
+						(dependency injection, factories, etc.); technically, the code is more
+						extendable; however, we refactored more than we added new features
+						making the abstractions an annoyance.
+						<br>
+						<br>
+						Mistakes I made & how i learnt from them
+						<br>
+						<br>
+						Non technical skills gained
+					</p>
+					<p><b>Tech stack:</b></p>
+					<ul>
+						<li>Next.js</li>
+						<li>React</li>
+						<li>TypeScript</li>
+						<li>JSX</li>
+						<li>CSS</li>
+						<li>Digital Ocean</li>
+					</ul>
+					<br>
+					<p class="subscript">ABOUT ME</p>
+					<p><b>Skills developed:</b></p>
+					<ul>
+						<li>Client communication</li>
+						<li>Requirements gathering</li>
+						<li>Time constrained development</li>
+						<li>SEO</li>
+						<li>UX design</li>
+						<li>Code collaboration (PRs, code review, consistent code formatting,
+							etc)</li>
+					</ul>
+					<br>
+					<p class="subscript">REFERENCES</p>
+					<p>Devang Krishna &middot; Client
+						<br>
+						<span class="marginless subscript">devmymail1@gmail.com &middot;
+							0468307301</span>
+					</p>
+				</div>
 			</div>
 			<div class="h-stack-wrap">
 				<p class="subscript">Feb 2023 - Oct 2023 &ensp; &middot; &ensp; Monash
