@@ -61,6 +61,11 @@ video {
 	margin-bottom: 10px;
 }
 
+iframe {
+	border-radius: 10px;
+	margin-bottom: 10px;
+}
+
 code {
 	padding: 5px;
 	background-color: var(--code-background);

@@ -26,33 +26,34 @@
 					</video>
 					<p class="subscript marginless">ABOUT THE PROJECT</p>
 					<p>
-						In December 2023 I started developing an Auslan spell
-						generation package for Monash University's department of Human Centred
-						Computing. The package translates text prompts into interactive 3D
-						animations, engaging the user and enhancing the learning experience. As
-						this project is an npm package, it can be integrated into any website.
-						We are still in the process of alpha testing; thus I cannot include a
-						live demo in this website; however, I am optimistic this should change
-						in the near future, so bookmark this website if you are interested :)
+						In December 2023 I started developing an Auslan spell generation package
+						for Monash University's Department of Human Centred Computing. The
+						package translates text prompts into interactive 3D animations, engaging
+						the user and enhancing the learning experience. As this project is an
+						npm package, it can be integrated into any website. We are still in the
+						process of alpha testing; thus I cannot include a live demo on this
+						website; however, I am optimistic this should change shortly, so
+						bookmark this website if you are interested :)
 						<br>
 						<br>
-						By default the package includes UI controls (that can be hidden using
-						the API) which allow users to interact with the 3D models. The
-						hands can also be programatically controlled through the API, providing
-						granular control over the animations. Additionally, all styles can be
-						overriden by developers using the package; for simplicity there is also
-						the option to only provide a colour theme.
+						By default, the package includes UI controls (that can be hidden using
+						the API) which allow users to interact with the 3D models. The hands can
+						also be programmatically controlled through the API, providing granular
+						control over the animations. Additionally, all styles can be overridden
+						by developers using the package; for simplicity, there is also the
+						option to only provide a colour theme.
 						<br>
 						<br>
 						The package was designed to be highly configurable, allowing any
-						developer to make it work for their usecase. Additionally, for when
+						developer to make it work for their use case. Additionally, for when
 						configuration fails, the package is highly extendable, meaning if a
-						feature does not exist you can either fork the repository, or make a PR.
+						feature does not exist you can either fork the repository or make a PR.
 						<br>
 						<br>
-						Plans for the future include: integrating the package into
-						<a class="link" href="https://auslan.org.au/">Sign Bank</a>, supporting
-						more langauges, and creating an educational finger spelling web app.
+						Plans for the future include: integrating the package into <a
+							class="link" href="https://auslan.org.au/">Sign Bank</a>,
+						supporting more languages, and creating an educational finger spelling
+						web app.
 					</p>
 					<p><b>Tech stack:</b></p>
 					<ul>
@@ -68,12 +69,13 @@
 					<br>
 					<p class="subscript">ABOUT ME</p>
 					<p>
+
 						This was my first time creating a package for other developers to use;
 						it forced me to think carefully about how others would use the code, and
-						thus how the API should be designed to accomodate these users. I believe
-						this experience greatly improved my ability to design software
+						thus how the API should be designed to accommodate these users. I
+						believe this experience greatly improved my ability to design software
 						architecture, as well as differentiate between good and bad design.
-						Notably the package is ~2500 lines of code, this is significantly less
+						Notably, the package is ~2500 lines of code, this is significantly less
 						than other projects I have completed; however, the effort spent on each
 						line is much greater, I dedicated time to code reviews and analysis to
 						simplify and reduce the code base as less code is better, this is
@@ -84,14 +86,14 @@
 						idea of the problem space, design a more elegant solution, bring the
 						design to life with code, review, and finalise. A specific example of
 						this approach, that I am proud of, is the code for handling animations.
-						I had programmed a simple solution that worked for most cases but had a
+						I had programmed a simple solution that worked for most cases but had
 						some major issues, this first iteration helped me understand the problem
-						and brainstorm solutions. Eventually I created a datastructure and class
-						that handled the animations perfectly, even allowing me to scrub the
-						animation (similar to a youtube video) this is especially cool because
-						we are playing and blending multiple animations, so something like
-						<code>mixer.update(seconds)</code> (the usual approach) would not work
-						as the blending would break.
+						and brainstorm solutions. Eventually, I created a data structure and
+						class that handled the animations perfectly, even allowing me to scrub
+						the animation (similar to a YouTube video) this is especially cool
+						because we are playing and blending multiple animations, so something
+						like <code>mixer.update(seconds)</code> (the usual approach) would not
+						work as the blending would break.
 						<br>
 						<br>
 						The last thing I will say is that I really enjoyed working on this
@@ -112,7 +114,7 @@
 					<p>Dr. Kalin Stefanov, ARC DECRA Fellow &middot; Supervisor, Chief Investigator
 						<br>
 						<span class="marginless subscript">kalin.stefanov@monash.edu &middot;
-							0450847590</span>
+							0450 847 590</span>
 					</p>
 					<br>
 				</div>
@@ -129,13 +131,13 @@
 						Soon after I resigned from my position at Woolworths I began work on the
 						frontend for <a class="link"
 							href="https://ilearneducation.com.au/">iLearn Education</a>.
-						iLearn Education provides in person tutoring services; however, they
-						wanted to expand to online courses where students could practice for
-						NAPLAN exams, and scholarship & entry tests; the website allows students
-						to view their results and compare to other students to get an idea of
-						where they would place for the official tests. Additionally, the website
-						posts blogs to inform parents of the actions they can take to give their
-						child the best chance for success.
+						iLearn Education currently provides in-person tutoring services;
+						however, they are expanded online to offer courses where students can
+						practice for NAPLAN exams, and scholarship & entry tests. The website
+						allows students to view their results and compare them to other students
+						providing insight into where they might place for the official tests.
+						Additionally, the website posts blogs to inform parents of the actions
+						they can take to maximise their child's chance of success.
 					</p>
 					<p><b>Tech stack:</b></p>
 					<ul>
@@ -152,19 +154,19 @@
 						This project was the first where I designed (alone) the frontend
 						architecture, in the process I made a few technical mistakes that came
 						from an overzealous attempt to apply programming principles & patterns
-						(dependency injection, factories, etc.); technically, the code is more
+						(dependency injection, factories, etc.). Technically, the code is more
 						extendable; however, we refactored more than we added new features
-						making the abstractions hinderance. I think my main takeaway from this
-						experience is: premature optimisation will (mostly) be a hinderance, it
-						is better to solve the problem in the most simple way, and add
+						making the abstractions hindrance. I think my main takeaway from this
+						experience is: that premature optimisation will (mostly) be a hindrance,
+						it is better to solve the problem in the most simple way, and only add
 						abstractions when a clear need arises.
 						<br>
 						<br>
 						I was able to take these learnings to my next role as a Casual Research
-						Officer, which helped me circumnavigate many of the problems I encounted
-						in this project; however, it is worth noting that this project had a
-						greater scope, and thus it was much harder to keep the code clean and
-						organised.
+						Officer, which helped me circumnavigate many of the problems I
+						encountered in this project; however, it is worth noting that this
+						project had a greater scope, and thus it was much harder to keep the
+						code clean and organised.
 					</p>
 					<p><b>Skills developed:</b></p>
 					<ul>
@@ -181,7 +183,7 @@
 					<p>Devang Krishna &middot; Client
 						<br>
 						<span class="marginless subscript">devmymail1@gmail.com &middot;
-							0468307301</span>
+							0468 307 301</span>
 					</p>
 				</div>
 			</div>
@@ -192,9 +194,36 @@
 			<div class="h-stack">
 				<div class="vertical-divider"></div>
 				<div>
+					<iframe width="100%" height="500"
+						src="https://www.youtube.com/embed/rj6vawIVE68">
+					</iframe>
 					<p class="subscript">ABOUT THE PROJECT</p>
 					<p>
 
+						FIT4002 is Monash University's Industry Experience unit, essentially,
+						you join a team and then are assigned a project and client. It is up to
+						the team how they want to organise everything - roles, version control,
+						tech stack (to an extent), etc. I ended up choosing a team that was a
+						subset of a larger team from a previous unit, I knew everyone in this
+						team would contribute and work well together. We were assigned a project
+						managed by
+						<a class="link"
+							href="https://www.monash.edu/it/humanise-lab/about-us/our-students/jonny-low">Jonny
+							Low</a>,
+						the project was a cross-platform mental health triage (prototype)
+						application. The application included roles for admins, nurses, and
+						nurse leaders; each role had different requirements, and thus different
+						features and UI. I won't bore you with a detailed explanation, instead,
+						I recommend watching the demo video
+						<a class="link"
+							href="https://www.youtube.com/watch?v=rj6vawIVE68">here</a>
+						(same as the embedded video), you can also watch a condensed version
+						<a class="link"
+							href="https://www.monash.edu/it/humanise-lab/about-us/our-students/jonny-low">here</a>;
+						Mr. Low has his own publication of the application if
+						<a class="link"
+							href="https://www.monash.edu/it/humanise-lab/about-us/our-students/jonny-low">here</a>
+						if you would like to read more.
 					</p>
 					<p><b>Tech stack:</b></p>
 					<ul>
@@ -206,6 +235,32 @@
 					<br>
 					<p class="subscript">ABOUT ME</p>
 					<p>
+						I learned a lot from the team on this project, specifically the other
+						lead developer (who ended up getting dux); I believe this was the first
+						time I recognised the code written by another developer was much better
+						than what I could accomplish (with my current knowledge). I actually use
+						very similar (de) serialisation logic in most of my projects now because
+						it works so well. What I took away from this (other than specific code
+						ideas) is: to read other people's code, especially people who are better
+						at programming than me.
+						<br>
+						<br>
+						As lead developers, Andre and I were responsible for the codebase, early
+						on we had to deny some PRs because of React mistakes, this was
+						understandable as most had not worked with the framework before; instead
+						of reproaching the team, I suggested we hold a 2-3 hour workshop, in
+						which, I would go over React basics and teach the team how to avoid some
+						of the mistakes we had observed. This workshop worked well, the code
+						noticeably improved, and the team said they found it useful.
+						<br>
+						<br>
+						Most of my experience has been on solo projects, or on projects where
+						the teams are very siloed, this was the first proper project where I
+						worked with a team of this size. I found the experience of working with
+						other developers to be very enjoyable, it allowed me to focus more on
+						architecture design and implementation rather than specific features. I
+						think I enjoy this more as I find designing architecture allows me to
+						express my understanding in more interesting ways.
 
 					</p>
 					<p><b>Skills developed:</b></p>
@@ -231,9 +286,28 @@
 			</div>
 			<div class="h-stack">
 				<div class="vertical-divider"></div>
-				<p>
-					Hello world
-				</p>
+				<div>
+					<p class="subscript">ABOUT THE JOB</p>
+					<p>
+						There's really not much to say about this one; I worked for five years
+						stacking shelves and serving in the deli.
+					</p>
+					<p class="subscript">ABOUT ME</p>
+					<p>
+						If there's one thing I learned from this job, it is that I never want to
+						work in a deli again. On a more serious note, this was my first job, so
+						it was very helpful for building my soft skills - communication,
+						teamwork, time management, etc. I worked at Woolworths while studying,
+						this improved my time management and organisational skills - it taught
+						me how to balance a social life (living on campus), with studies, and
+						work, a skill I'm sure I'll be using for the rest of my life.
+					</p>
+					<p class="subscript">REFERENCES</p>
+					<p>Kristian Siviloglou &middot; Fresh Convenience Manager
+						<br>
+						<span class="marginless subscript">0426 169 417</span>
+					</p>
+				</div>
 			</div>
 		</div>
 	</main>
