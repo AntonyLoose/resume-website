@@ -160,7 +160,7 @@ code {
 	gap: 20px;
 }
 
-.experience-content {
+.content {
 	width: 100%;
 	height: fit-content;
 	position: relative;
@@ -170,7 +170,7 @@ code {
 	box-sizing: border-box;
 }
 
-.experiences-container {
+.container {
 	margin: auto;
 	margin-top: 10%;
 	width: 60%;
