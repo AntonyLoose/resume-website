@@ -84,6 +84,7 @@ code {
 .title {
 	font-family: "cyber-punk";
 	margin-top: 0px;
+	margin-bottom: 20px;
 	font-size: 80px;
 }
 
@@ -113,7 +114,11 @@ code {
 	margin: 0px;
 }
 
-.h-stack {
+.h-stack,
+.h-stack-wrap,
+.h-stack-align-center,
+.h-stack-justify-center,
+.h-stack-centered {
 	display: flex;
 	gap: 10px;
 }
@@ -122,11 +127,30 @@ code {
 	flex-wrap: wrap;
 }
 
+.h-stack-align-center {
+	align-items: center;
+}
+
+.h-stack-justify-center {
+	justify-content: center;
+}
+
+.h-stack-centered {
+	align-items: center;
+	justify-content: center;
+}
+
 .vertical-divider {
 	min-width: 1px;
 	border-radius: 5px;
 	background-color: var(--subscript);
 	margin-inline: 5px;
+}
+
+.horizontal-divider {
+	height: 1px;
+	border-radius: 5px;
+	background-color: var(--subscript);
 }
 
 .link,
@@ -176,6 +200,30 @@ code {
 	width: 60%;
 }
 
+.profile-pic {
+	width: 200px;
+	height: 200px;
+	border-radius: 100%;
+	object-fit: cover;
+}
+
+.circle {
+	width: 5px;
+	height: 5px;
+	border-radius: 100%;
+	border: 1px solid var(--subscript);
+}
+
+/* about me */
+.about-header {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 20px;
+}
+
+/* stars */
 .stars-container {
 	width: 100%;
 	height: 100%;
@@ -194,16 +242,24 @@ code {
 	transition: top 0.2s ease-out, left 0.2s ease-out;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1000px) {
 	.title {
 		font-size: 50px;
 	}
 
-
-	.experiences-container {
+	.container {
 		width: 100%;
 	}
+
 }
+
+@media screen and (max-width: 510px) {
+	.profile-pic {
+		width: 250px;
+		height: 250px;
+	}
+}
+
 
 @media screen and (max-width: 700px) {
 	.links-container {
