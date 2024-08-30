@@ -101,4 +101,4 @@ setInterval(() => {
 	elapsed += tick_increment;
 }, tick_increment)
 
-
+// TODO: setup charts js
