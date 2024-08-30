@@ -1,6 +1,3 @@
-import { check_intersecting_rectangles } from "./index.js";
-
-// TODO: review this
 class Star {
 	#_opacity = 0;
 	#_max_opacity = 0.6;
@@ -25,7 +22,21 @@ class Star {
 	#_fade_out_time;
 	#_on_death;
 
-	constructor(x, y, width, height, life_time, fade_in_time, fade_out_time, tick_increment, on_death) {
+	constructor(
+		x,
+		y,
+		width,
+		height,
+		life_time,
+		fade_in_time,
+		fade_out_time,
+		tick_increment,
+		on_death,
+		max_opacity = 0.6,
+		terminal_velocity = 50,
+		friction = 1.2,
+		density = 2
+	) {
 		this.#_x = x;
 		this.#_y = y;
 		this.#_width = width;
@@ -35,6 +46,11 @@ class Star {
 		this.#_fade_in_time = fade_in_time;
 		this.#_fade_out_time = fade_out_time;
 		this.#_on_death = on_death;
+		this.#_max_opacity = max_opacity;
+		this.#_terminal_velocity = terminal_velocity;
+		this.#_friction = friction;
+		this.#_density = density;
+		this.#_mass = width * height * this.#_density;
 		this.#_element = document.createElement("div");
 		this.#_element.className = "star";
 		this.#_element.style.top = y + "px";
@@ -42,7 +58,6 @@ class Star {
 		this.#_element.style.width = width + "px";
 		this.#_element.style.height = height + "px";
 		this.#_element.style.opacity = "0";
-		this.#_mass = width * height * this.#_density;
 		container.appendChild(this.#_element);
 	}
 
@@ -84,7 +99,7 @@ class Star {
 		this.#_element.style.opacity = (this.#_opacity).toString();
 		if (this.#_opacity <= 0) {
 			this.#_opacity = 0;
-			this.#_on_death();
+			this.#_on_death(this);
 		}
 	}
 
@@ -123,6 +138,7 @@ class Star {
 
 	// A very wack implementation of friction
 	// TODO: a better implementation of friction
+	// realistically, it should be a force applied externally to this body
 	#_apply_friction() {
 		const fx = this.#_vx / (1 + this.#_friction);
 		const fy = this.#_vy / (1 + this.#_friction);
@@ -157,37 +173,47 @@ class Star {
 	}
 }
 
-// TODO: review this
-function generate_random_star() {
+function generate_random_star(
+	min_size,
+	max_size,
+	min_fade_in_time,
+	max_fade_in_time,
+	min_fade_out_time,
+	max_fade_out_time,
+	min_life_time,
+	max_life_time,
+	on_death,
+	// optional
+	max_opacity,
+	terminal_velocity,
+	friction,
+	density
+) {
 	const doc_width = document.documentElement.offsetWidth;
 	const doc_height = document.documentElement.offsetHeight;
 	const x = doc_width * Math.random();
 	const y = doc_height * Math.random();
-	const size = 10 + 20 * Math.random();
-	const fade_in_time = 2000 + Math.random() * 1000;
-	const fade_out_time = 2000 + Math.random() * 1000;
-	const life_time = 3000 + Math.random() * 1000;
-	if (stars.length < max_stars) {
-		const star = new Star(
-			x,
-			y,
-			size,
-			size,
-			life_time,
-			fade_in_time,
-			fade_out_time,
-			tick_increment,
-			() => {
-				stars = stars.filter(s => star != s);
-				container.removeChild(star.element);
-			}
-		);
-		container.appendChild(star.element);
-		stars.push(star);
-	}
+	const size = min_size + (max_size - min_size) * Math.random();
+	const fade_in_time = min_fade_in_time + (max_fade_in_time - min_fade_in_time) * Math.random();
+	const fade_out_time = min_fade_out_time + (max_fade_out_time - min_fade_out_time) * Math.random();
+	const life_time = min_life_time + (max_life_time - min_life_time) * Math.random();
+	return new Star(
+		x,
+		y,
+		size,
+		size,
+		life_time,
+		fade_in_time,
+		fade_out_time,
+		tick_increment,
+		on_death,
+		max_opacity,
+		terminal_velocity,
+		friction,
+		density
+	);
 }
 
-// TODO: review this
 function apply_gravity(
 	star,
 	mouse_x,
@@ -208,20 +234,42 @@ function apply_gravity(
 	star.apply_force(fx, fy);
 }
 
-// TODO: clean this up
+function generate_star_and_add_to_dom() {
+	if (stars.length >= max_stars) {
+		return;
+	}
+	const star = generate_random_star(
+		10,
+		30,
+		2000,
+		3000,
+		2000,
+		3000,
+		3000,
+		4000,
+		(star) => {
+			stars = stars.filter(s => s != star);
+			container.removeChild(star.element);
+		}
+	)
+	stars.push(star);
+	container.appendChild(star.element);
+}
+
+const tick_increment = 50;
+const container = document.getElementById("experiences-root");
+const max_stars = 60;
+let stars = [];
+let elapsed = 0;
 let mouse_y = 0;
 let mouse_x = 0;
+let mouse_mass = -5000;
+
 document.addEventListener("mousemove", event => {
 	mouse_x = event.clientX + window.scrollX;
 	mouse_y = event.clientY + window.scrollY;
 })
-
-// TODO: clean this up
-const tick_increment = 50;
-const container = document.getElementById("experiences-root");
-const max_stars = 30;
-let stars = [];
-let elapsed = 0;
+document.addEventListener("mousedown", _ => mouse_mass = mouse_mass * -1);
 
 setInterval(() => {
 	stars.forEach(star => {
@@ -229,14 +277,14 @@ setInterval(() => {
 			star,
 			mouse_x,
 			mouse_y,
-			-5000
+			mouse_mass
 		)
 		star.tick();
 	});
 	if (elapsed % 500 == 0) {
-		generate_random_star();
-		generate_random_star();
-		generate_random_star();
+		generate_star_and_add_to_dom();
+		generate_star_and_add_to_dom();
+		generate_star_and_add_to_dom();
 	}
 	elapsed += tick_increment;
 }, tick_increment)
