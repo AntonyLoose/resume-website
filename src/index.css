@@ -187,6 +187,7 @@ code {
 .content {
 	width: 100%;
 	height: fit-content;
+	min-height: 100vh;
 	position: relative;
 	overflow-x: hidden;
 	overflow-y: hidden;
