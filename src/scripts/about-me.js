@@ -34,6 +34,14 @@ function create_li_element(text) {
 }
 
 const skills = [
+	"TypeScript/JavaScript",
+	"HTML",
+	"CSS",
+	"THREE.js",
+	"React",
+	"Next.js"
+]
+const hidden_skills = [
 	"npm",
 	"Webpack",
 	"express",
@@ -47,23 +55,29 @@ const skills = [
 	"c",
 	"Arduino",
 	"Swift"
-]
+];
 const skills_list = document.getElementById("skills-list");
 const lis = skills.map(skill => create_li_element(skill));
-const see_more = document.getElementById("see-more");
+const hidden_lis = hidden_skills.map(skill => create_li_element(skill));
+const see_more = document.createElement("li");
+see_more.textContent = "...See more";
+see_more.className = "link";
 const see_less = document.createElement("li");
 see_less.className = "link";
 see_less.textContent = "...See less";
 
+lis.forEach(li => skills_list.appendChild(li));
+skills_list.appendChild(see_more);
+
 see_more.onclick = () => {
 	skills_list.removeChild(see_more);
-	lis.forEach(li => skills_list.appendChild(li));
+	hidden_lis.forEach(li => skills_list.appendChild(li));
 	skills_list.appendChild(see_less);
 }
 
 see_less.onclick = () => {
 	skills_list.removeChild(see_less);
-	lis.forEach(li => skills_list.removeChild(li));
+	hidden_lis.forEach(li => skills_list.removeChild(li));
 	skills_list.appendChild(see_more);
 }
 
@@ -102,3 +116,28 @@ setInterval(() => {
 }, tick_increment)
 
 // TODO: setup charts js
+const ctx = document.getElementById('chart');
+const data = {
+	labels: skills,
+	datasets: [{
+		label: "Skills Breakdown",
+		data: [95, 80, 90, 70, 75, 65]
+	}]
+}
+
+const options = {
+	scales: {
+		r: {
+			suggestedMin: 0
+		}
+	}
+}
+
+const config = {
+	type: "radar",
+	data: data,
+	options: options
+}
+
+
+new Chart(ctx, config);
