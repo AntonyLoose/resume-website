@@ -1,33 +1,6 @@
 import { fade_img_in, fade_img_out, getHexColor, getRGBAColor } from "./index.js";
 import { generate_random_star, apply_gravity } from "./stars.js";
 
-function generate_star_and_add_to_dom(tick_increment) {
-	if (stars.length >= max_stars) {
-		return;
-	}
-	const star = generate_random_star(
-		10,
-		15,
-		2000,
-		3000,
-		2000,
-		3000,
-		3000,
-		4000,
-		tick_increment,
-		(star) => {
-			stars = stars.filter(s => s != star);
-			container.removeChild(star.element);
-		},
-		0.5,
-		50,
-		1.2,
-		4
-	)
-	stars.push(star);
-	container.appendChild(star.element);
-}
-
 function create_li_element(text) {
 	const li = document.createElement("li");
 	li.textContent = text;
@@ -57,20 +30,32 @@ const hidden_skills = [
 	"Arduino",
 	"Swift"
 ];
-const profile_pic = document.getElementById("profile-pic");
-const skills_list = document.getElementById("skills-list");
 const lis = skills.map(skill => create_li_element(skill));
 const hidden_lis = hidden_skills.map(skill => create_li_element(skill));
+const skills_list = document.getElementById("skills-list");
+lis.forEach(li => skills_list.appendChild(li));
+
 const see_more = document.createElement("li");
 see_more.textContent = "...See more";
 see_more.className = "link";
+skills_list.appendChild(see_more);
+see_more.onclick = () => {
+	skills_list.removeChild(see_more);
+	hidden_lis.forEach(li => skills_list.appendChild(li));
+	skills_list.appendChild(see_less);
+}
+
 const see_less = document.createElement("li");
 see_less.className = "link";
 see_less.textContent = "...See less";
+see_less.onclick = () => {
+	skills_list.removeChild(see_less);
+	hidden_lis.forEach(li => skills_list.removeChild(li));
+	skills_list.appendChild(see_more);
+}
 
-lis.forEach(li => skills_list.appendChild(li));
-skills_list.appendChild(see_more);
-
+const profile_pic = document.getElementById("profile-pic");
+const lowest_opacity = 0.05;
 let profile_pic_hidden = false;
 let animating = false;
 profile_pic.onclick = () => {
@@ -80,28 +65,15 @@ profile_pic.onclick = () => {
 		fade_img_out(profile_pic, () => {
 			profile_pic_hidden = true;
 			animating = false;
-		}, 10, 0.02, 0.05);
+		}, 10, 0.02, lowest_opacity);
 	} else {
 		animating = true;
 		fade_img_in(profile_pic, () => {
 			profile_pic_hidden = false;
 			animating = false;
-		}, 10, 0.02, 0.05);
+		}, 10, 0.02, lowest_opacity);
 	}
 }
-
-see_more.onclick = () => {
-	skills_list.removeChild(see_more);
-	hidden_lis.forEach(li => skills_list.appendChild(li));
-	skills_list.appendChild(see_less);
-}
-
-see_less.onclick = () => {
-	skills_list.removeChild(see_less);
-	hidden_lis.forEach(li => skills_list.removeChild(li));
-	skills_list.appendChild(see_more);
-}
-
 
 // CHART
 const ctx = document.getElementById('chart');
@@ -132,7 +104,7 @@ const options = {
 				color: getHexColor("--subscript"),
 			},
 			ticks: {
-				callback: (value, index) => "",
+				callback: () => "",
 				font: {
 					size: 13,
 				},
@@ -148,15 +120,40 @@ const options = {
 	}
 }
 
-const config = {
+new Chart(ctx, {
 	type: "radar",
 	data: data,
 	options: options
-}
-
-new Chart(ctx, config);
+});
 
 // STARS
+function generate_star_and_add_to_dom(tick_increment) {
+	if (stars.length >= max_stars) {
+		return;
+	}
+	const star = generate_random_star(
+		10,
+		15,
+		2000,
+		3000,
+		2000,
+		3000,
+		3000,
+		4000,
+		tick_increment,
+		(star) => {
+			stars = stars.filter(s => s != star);
+			container.removeChild(star.element);
+		},
+		0.5,
+		50,
+		1.2,
+		4
+	)
+	stars.push(star);
+	container.appendChild(star.element);
+}
+
 const container = document.getElementById("about-content");
 const tick_increment = 50;
 const max_stars = 30;
