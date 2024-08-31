@@ -1,4 +1,4 @@
-import { getRGBAColor } from "./index.js";
+import { fade_img_in, fade_img_out, getHexColor, getRGBAColor } from "./index.js";
 import { generate_random_star, apply_gravity } from "./stars.js";
 
 function generate_star_and_add_to_dom(tick_increment) {
@@ -57,6 +57,7 @@ const hidden_skills = [
 	"Arduino",
 	"Swift"
 ];
+const profile_pic = document.getElementById("profile-pic");
 const skills_list = document.getElementById("skills-list");
 const lis = skills.map(skill => create_li_element(skill));
 const hidden_lis = hidden_skills.map(skill => create_li_element(skill));
@@ -69,6 +70,25 @@ see_less.textContent = "...See less";
 
 lis.forEach(li => skills_list.appendChild(li));
 skills_list.appendChild(see_more);
+
+let profile_pic_hidden = false;
+let animating = false;
+profile_pic.onclick = () => {
+	if (animating) return;
+	if (!profile_pic_hidden) {
+		animating = true;
+		fade_img_out(profile_pic, () => {
+			profile_pic_hidden = true;
+			animating = false;
+		}, 10, 0.02, 0.05);
+	} else {
+		animating = true;
+		fade_img_in(profile_pic, () => {
+			profile_pic_hidden = false;
+			animating = false;
+		}, 10, 0.02, 0.05);
+	}
+}
 
 see_more.onclick = () => {
 	skills_list.removeChild(see_more);
@@ -83,6 +103,60 @@ see_less.onclick = () => {
 }
 
 
+// CHART
+const ctx = document.getElementById('chart');
+const data = {
+	labels: skills,
+	datasets: [{
+		label: "Skills Breakdown",
+		data: [95, 80, 90, 70, 75, 65],
+		backgroundColor: getRGBAColor("--primary", 0.3),
+		borderColor: getRGBAColor("--primary")
+	}]
+}
+
+const options = {
+	scales: {
+		r: {
+			suggestedMin: 0,
+			angleLines: {
+				color: getRGBAColor("--subscript", 0.6)
+			},
+			grid: {
+				color: getRGBAColor("--subscript", 0.2)
+			},
+			pointLabels: {
+				font: {
+					size: 13
+				},
+				color: getHexColor("--subscript"),
+			},
+			ticks: {
+				callback: (value, index) => "",
+				font: {
+					size: 13,
+				},
+				color: getHexColor("--subscript"),
+				backdropColor: "transparent"
+			}
+		}
+	},
+	plugins: {
+		legend: {
+			display: false
+		}
+	}
+}
+
+const config = {
+	type: "radar",
+	data: data,
+	options: options
+}
+
+new Chart(ctx, config);
+
+// STARS
 const container = document.getElementById("about-content");
 const tick_increment = 50;
 const max_stars = 30;
@@ -116,31 +190,3 @@ setInterval(() => {
 	elapsed += tick_increment;
 }, tick_increment)
 
-// TODO: setup charts js
-const ctx = document.getElementById('chart');
-const data = {
-	labels: skills,
-	datasets: [{
-		label: "Skills Breakdown",
-		data: [95, 80, 90, 70, 75, 65],
-		backgroundColor: getRGBAColor("--primary", 0.3),
-		borderColor: getRGBAColor("--primary")
-	}]
-}
-
-const options = {
-	scales: {
-		r: {
-			suggestedMin: 0
-		}
-	}
-}
-
-const config = {
-	type: "radar",
-	data: data,
-	options: options
-}
-
-
-new Chart(ctx, config);

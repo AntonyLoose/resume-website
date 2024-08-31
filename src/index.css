@@ -1,6 +1,6 @@
 :root {
 	--text: #E3E3E3;
-	--background: #35333B;
+	--background: #383838;
 	--subscript: #BFBFBF;
 	--code-background: #595959;
 	--primary: #FF8345;
@@ -203,10 +203,11 @@ code {
 }
 
 .profile-pic {
-	width: 200px;
-	height: 200px;
+	width: 250px;
+	height: 250px;
 	border-radius: 100%;
 	object-fit: cover;
+	cursor: pointer;
 }
 
 .circle {
@@ -223,6 +224,14 @@ code {
 	flex-wrap: wrap;
 	align-items: center;
 	gap: 20px;
+}
+
+.skills-chart {
+	position: absolute;
+	transform: translateY(-100%);
+	z-index: -1;
+	padding: 10px;
+	box-sizing: border-box;
 }
 
 /* stars */
@@ -244,7 +253,7 @@ code {
 	transition: top 0.2s ease-out, left 0.2s ease-out;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1080px) {
 	.title {
 		font-size: 50px;
 	}
@@ -254,14 +263,6 @@ code {
 	}
 
 }
-
-@media screen and (max-width: 510px) {
-	.profile-pic {
-		width: 250px;
-		height: 250px;
-	}
-}
-
 
 @media screen and (max-width: 700px) {
 	.links-container {

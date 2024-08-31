@@ -13,7 +13,11 @@
 	<main id="about-content" class="content">
 		<div id="about-container" class="container">
 			<div class="about-header">
-				<img id="profile-pic" class="profile-pic" src="/public/images/headshot_08-2024.jpeg" />
+				<div>
+					<img id="profile-pic" class="profile-pic"
+						src="/public/images/headshot_08-2024.jpeg" />
+					<canvas id="chart" class="skills-chart"></canvas>
+				</div>
 				<div style="margin-top: 20px;">
 					<a class="back-link" href="/pages/landing.html">&#8592 Home</a>
 					<h1 class="title marginless">About Me</h1>
@@ -43,8 +47,6 @@
 			This list is not all encompasing...
 			<ul id="skills-list">
 			</ul>
-			<!-- TODO: skills graph -->
-			<canvas id="chart"></canvas>
 		</div>
 	</main>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

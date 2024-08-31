@@ -1,5 +1,5 @@
-export function fade_img_in(img, on_complete, interval = 10, increment = 0.005) {
-	let opacity = 0;
+export function fade_img_in(img, on_complete, interval = 10, increment = 0.005, initial_opacity = 0) {
+	let opacity = initial_opacity;
 	const id = setInterval(() => {
 		opacity += increment;
 		if (opacity >= 1) {
@@ -11,12 +11,12 @@ export function fade_img_in(img, on_complete, interval = 10, increment = 0.005) 
 	}, interval)
 }
 
-export function fade_img_out(img, on_complete, interval = 10, increment = 0.005) {
+export function fade_img_out(img, on_complete, interval = 10, increment = 0.005, min_opacity = 0) {
 	let opacity = 1;
 	const id = setInterval(() => {
 		opacity -= increment;
-		if (opacity <= 0) {
-			img.style.opacity = "0";
+		if (opacity <= min_opacity) {
+			img.style.opacity = min_opacity.toString();
 			on_complete && on_complete();
 			clearInterval(id);
 		}
