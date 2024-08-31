@@ -1,3 +1,4 @@
+import { getRGBAColor } from "./index.js";
 import { generate_random_star, apply_gravity } from "./stars.js";
 
 function generate_star_and_add_to_dom(tick_increment) {
@@ -121,7 +122,9 @@ const data = {
 	labels: skills,
 	datasets: [{
 		label: "Skills Breakdown",
-		data: [95, 80, 90, 70, 75, 65]
+		data: [95, 80, 90, 70, 75, 65],
+		backgroundColor: getRGBAColor("--primary", 0.3),
+		borderColor: getRGBAColor("--primary")
 	}]
 }
 
