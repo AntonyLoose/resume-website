@@ -48,3 +48,8 @@ export function hexToRGBA(hex, opacity = 1) {
 	let b = parseInt(hex.substring(4, 6), 16);
 	return `rgba(${r}, ${g}, ${b}, ${opacity})`;
 }
+
+export function getRGBAColor(cssVarName, opacity = 1) {
+	const hex = getHexColor(cssVarName);
+	return hexToRGBA(hex, opacity);
+}
