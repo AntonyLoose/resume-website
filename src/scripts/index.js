@@ -1,4 +1,3 @@
-// Functions
 export function fade_img_in(img, on_complete, interval = 10, increment = 0.005) {
 	let opacity = 0;
 	const id = setInterval(() => {
@@ -31,4 +30,21 @@ export function check_intersecting_rectangles(rect1_x1, rect1_y1, rect1_x2, rect
 	const y_intersect = (rect1_y1 >= rect2_y1 && rect1_y1 <= rect2_y2) ||
 		(rect1_y2 <= rect2_y2 && rect1_y2 >= rect2_y1);
 	return x_intersect && y_intersect;
+}
+
+/**
+ * Expects the cssVar to be a hex value, this function does not validate
+ */
+export function getHexColor(cssVarName) {
+	const rootStyle = getComputedStyle(document.documentElement);
+	const colorValue = rootStyle.getPropertyValue(cssVarName).trim();
+	return colorValue;
+}
+
+export function hexToRGBA(hex, opacity = 1) {
+	hex = hex.replace(/^#/, '');
+	let r = parseInt(hex.substring(0, 2), 16);
+	let g = parseInt(hex.substring(2, 4), 16);
+	let b = parseInt(hex.substring(4, 6), 16);
+	return `rgba(${r}, ${g}, ${b}, ${opacity})`;
 }
