@@ -32,6 +32,7 @@
 html,
 body {
 	height: fit-content;
+	scrollbar-gutter: stable;
 }
 
 body {
