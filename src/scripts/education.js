@@ -2,12 +2,12 @@ import { generate_random_star, apply_gravity } from "./stars.js";
 
 const container = document.getElementById("education-content");
 const tick_increment = 50;
-const max_stars = 20;
+const max_stars = 50;
 let stars = [];
 let elapsed = 0;
 let mouse_y = 0;
 let mouse_x = 0;
-let mouse_mass = -5000;
+let mouse_mass = -3000;
 
 document.addEventListener("mousemove", event => {
 	mouse_x = event.clientX + window.scrollX;
@@ -39,8 +39,8 @@ function generate_star_and_add_to_dom() {
 		return;
 	}
 	const star = generate_random_star(
-		30,
-		50,
+		5,
+		10,
 		2000,
 		3000,
 		2000,
@@ -53,9 +53,9 @@ function generate_star_and_add_to_dom() {
 			container.removeChild(star.element);
 		},
 		0.4,
-		30,
-		1.1,
-		1
+		10,
+		1.4,
+		5.0
 	)
 	stars.push(star);
 	container.appendChild(star.element);
