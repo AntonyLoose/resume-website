@@ -75,6 +75,10 @@ code {
 	opacity: 0.8;
 }
 
+span.spam-protection {
+	display: none;
+}
+
 .bg-img {
 	opacity: 1;
 	width: 100%;
