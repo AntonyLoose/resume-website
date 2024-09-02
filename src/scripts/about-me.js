@@ -255,3 +255,13 @@ setInterval(() => {
 	elapsed += tick_increment;
 }, tick_increment)
 
+// EMAIL
+function show_email() {
+	const email = document.getElementById("show-email");
+	email.className = "subscript marginless";
+	email.innerHTML = "antony<!-- 123stopspam -->35<span class='spam-protection'>Stop trying to steal my email, thanks.</span>007@gma<!-- 123stopspam -->il.com";
+	email.onclick = undefined;
+}
+
+const show_email_btn = document.getElementById("show-email");
+show_email_btn.onclick = show_email;

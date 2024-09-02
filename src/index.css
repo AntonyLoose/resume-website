@@ -228,6 +228,10 @@ span.spam-protection {
 	border: 1px solid var(--subscript);
 }
 
+.hidden-email {
+	filter: blur(4px);
+}
+
 /* about me */
 .about-header {
 	width: 100%;
