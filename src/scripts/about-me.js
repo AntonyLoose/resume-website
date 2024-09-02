@@ -125,7 +125,7 @@ const fun_fact_container = document.getElementById("fun-fact-container");
 fun_fact_container.appendChild(first_subscript);
 fun_fact_container.appendChild(first_title);
 
-setInterval(() => {
+function swap_fun_fact() {
 	const next_fact = dip.draw();
 	const [new_title, new_subscript] = generate_fun_fact_elements(next_fact);
 	new_title.style.opacity = 0;
@@ -137,9 +137,11 @@ setInterval(() => {
 		fun_fact_container.removeChild(title);
 		fun_fact_container.appendChild(new_subscript);
 		fun_fact_container.appendChild(new_title);
-		fade_multiple_elements_in([new_title, new_subscript], () => null, 10, 0.008);
+		fade_multiple_elements_in([new_title, new_subscript], () => setTimeout(swap_fun_fact, 5000), 10, 0.008);
 	}, 10, 0.008);
-}, 8000)
+}
+
+setTimeout(swap_fun_fact, 5000);
 
 // CHART
 const ctx = document.getElementById('chart');
