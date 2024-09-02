@@ -1,8 +1,9 @@
 :root {
 	--text: #E3E3E3;
-	--background: #35333B;
+	--background: #383838;
 	--subscript: #BFBFBF;
 	--code-background: #595959;
+	--primary: #5168C2;
 
 }
 
@@ -31,6 +32,7 @@
 html,
 body {
 	height: fit-content;
+	scrollbar-gutter: stable;
 }
 
 body {
@@ -84,6 +86,7 @@ code {
 .title {
 	font-family: "cyber-punk";
 	margin-top: 0px;
+	margin-bottom: 20px;
 	font-size: 80px;
 }
 
@@ -113,7 +116,12 @@ code {
 	margin: 0px;
 }
 
-.h-stack {
+.h-stack,
+.h-stack-wrap,
+.h-stack-align-center,
+.h-stack-justify-center,
+.h-stack-centered,
+.h-stack-spaced {
 	display: flex;
 	gap: 10px;
 }
@@ -122,11 +130,34 @@ code {
 	flex-wrap: wrap;
 }
 
+.h-stack-align-center {
+	align-items: center;
+}
+
+.h-stack-justify-center {
+	justify-content: center;
+}
+
+.h-stack-centered {
+	align-items: center;
+	justify-content: center;
+}
+
+.h-stack-spaced {
+	justify-content: space-between;
+}
+
 .vertical-divider {
 	min-width: 1px;
 	border-radius: 5px;
 	background-color: var(--subscript);
 	margin-inline: 5px;
+}
+
+.horizontal-divider {
+	height: 1px;
+	border-radius: 5px;
+	background-color: var(--subscript);
 }
 
 .link,
@@ -160,9 +191,10 @@ code {
 	gap: 20px;
 }
 
-.experience-content {
+.content {
 	width: 100%;
 	height: fit-content;
+	min-height: 100vh;
 	position: relative;
 	overflow-x: hidden;
 	overflow-y: hidden;
@@ -170,12 +202,61 @@ code {
 	box-sizing: border-box;
 }
 
-.experiences-container {
+.container {
 	margin: auto;
 	margin-top: 10%;
 	width: 60%;
+	max-width: 1200px;
 }
 
+.profile-pic {
+	width: 250px;
+	height: 250px;
+	border-radius: 100%;
+	object-fit: cover;
+	cursor: pointer;
+}
+
+.circle {
+	width: 5px;
+	height: 5px;
+	border-radius: 100%;
+	border: 1px solid var(--subscript);
+}
+
+/* about me */
+.about-header {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 20px;
+}
+
+.skills-chart {
+	position: absolute;
+	transform: translateY(-100%);
+	z-index: -1;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+.see-more {
+	width: fit-content;
+}
+
+.fun-fact-title {
+	font-weight: bold;
+	font-size: 50px;
+	line-height: 50px;
+}
+
+.fun-fact-subscript {
+	margin-top: 50px;
+	margin-bottom: 0;
+}
+
+/* stars */
 .stars-container {
 	width: 100%;
 	height: 100%;
@@ -194,15 +275,15 @@ code {
 	transition: top 0.2s ease-out, left 0.2s ease-out;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1080px) {
 	.title {
 		font-size: 50px;
 	}
 
-
-	.experiences-container {
+	.container {
 		width: 100%;
 	}
+
 }
 
 @media screen and (max-width: 700px) {

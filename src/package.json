@@ -1,0 +1,11 @@
+{
+  "name": "antony-loose-resume",
+  "version": "1.0.0",
+  "description": "My resume website",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Antony Loose",
+  "license": "ISC"
+}

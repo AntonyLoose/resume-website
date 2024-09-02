@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>About Me</title>
+	<link rel="stylesheet" href="../index.css">
+</head>
+
+<body>
+	<main id="about-content" class="content">
+		<div id="about-container" class="container">
+			<div class="about-header">
+				<div>
+					<img id="profile-pic" class="profile-pic"
+						src="/public/images/headshot_08-2024.jpeg" />
+					<canvas id="chart" class="skills-chart"></canvas>
+				</div>
+				<div style="margin-top: 20px;">
+					<a class="back-link" href="/pages/landing.html">&#8592 Home</a>
+					<h1 class="title marginless">About Me</h1>
+					<div class="h-stack-wrap">
+						<a class="link marginless"
+							href="https://github.com/AntonyLoose">GitHub</a>
+						&middot;
+						<a class="link marginless"
+							href="https://www.linkedin.com/in/antony-loose-41011428b/">LinkedIn</a>
+						&middot;
+						<span class="subscript marginless">antony35007@gmail.com</span>
+					</div>
+				</div>
+			</div>
+			<div class="h-stack-align-center" style="margin-block: 20px">
+				<div class="circle"></div>
+				<div class="horizontal-divider" style="flex: 1;"></div>
+			</div>
+			<div>
+				<div class="h-stack-spaced h-stack-wrap" style="gap: 10px 50px">
+					<p class="marginless">
+						<span class="about-detail-highlight">22</span>
+						<br>
+						<span class="subscript">Years Old</span>
+					</p>
+					<p class="marginless">
+						<span class="about-detail-highlight">Software Engineer</span>
+						<br>
+						<span class="subscript">Specialising in full-stack webdev</span>
+					</p>
+					<p class="marginless">
+						<span class="about-detail-highlight">Monash
+							University</span>
+						<br>
+						<span class="subscript">Graduate</span>
+					</p>
+				</div>
+				<h2>Skills</h2>
+				<ul id="skills-list">
+				</ul>
+				<div id="fun-fact-container">
+				</div>
+			</div>
+	</main>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="../scripts/about-me.js" type="module"></script>
+</body>
+
+</html>
