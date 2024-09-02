@@ -73,4 +73,8 @@ export class LuckyDip {
 		this.#_items = this.#_items.filter(i => item != i);
 		return item;
 	}
+
+	remove(item) {
+		this.#_items = this.#_items.filter(i => item != i);
+	}
 }
