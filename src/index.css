@@ -206,6 +206,7 @@ code {
 	margin: auto;
 	margin-top: 10%;
 	width: 60%;
+	max-width: 1200px;
 }
 
 .profile-pic {
@@ -238,6 +239,10 @@ code {
 	z-index: -1;
 	padding: 10px;
 	box-sizing: border-box;
+}
+
+.see-more {
+	width: fit-content;
 }
 
 .fun-fact-title {

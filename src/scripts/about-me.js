@@ -38,7 +38,7 @@ lis.forEach(li => skills_list.appendChild(li));
 
 const see_more = document.createElement("li");
 see_more.textContent = "...See more";
-see_more.className = "link";
+see_more.className = "link see-more";
 skills_list.appendChild(see_more);
 see_more.onclick = () => {
 	skills_list.removeChild(see_more);
@@ -47,7 +47,7 @@ see_more.onclick = () => {
 }
 
 const see_less = document.createElement("li");
-see_less.className = "link";
+see_less.className = "link see-more";
 see_less.textContent = "...See less";
 see_less.onclick = () => {
 	skills_list.removeChild(see_less);
