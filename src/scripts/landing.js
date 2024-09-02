@@ -1,13 +1,11 @@
 import { fade_element_in, fade_element_out } from "./index.js";
 
-// Constants
 const landing_background_images = [
 	"../public/images/melbourne-night.jpg",
 	"../public/images/woodside.jpg",
 	"../public/images/murray-river-night.jpeg",
 ]
 
-// Functions
 function swap_current_image() {
 	const container = document.getElementById("background-container");
 	const curr_background_img = document.getElementById("background");
@@ -27,10 +25,8 @@ function swap_current_image() {
 	}, 10, 0.005);
 	fade_element_in(new_background_img, () => {
 		new_background_img.id = "background";
+		setTimeout(swap_current_image, 5000);
 	}, 10, 0.005);
 }
 
-// Other
-setInterval(() => {
-	swap_current_image();
-}, 10000)
+setTimeout(swap_current_image, 5000);
