@@ -1,6 +1,6 @@
 :root {
 	--text: #E3E3E3;
-	--background: #383838;
+	--background: #303136;
 	--subscript: #BFBFBF;
 	--code-background: #595959;
 	--primary: #5168C2;
@@ -184,11 +184,11 @@ code {
 
 .links-container {
 	max-width: 500px;
-	width: 100%;
 	margin-block: 10px;
+	margin-inline: auto;
 	justify-content: space-between;
 	align-items: center;
-	gap: 20px;
+	gap: 10px 50px;
 }
 
 .content {
