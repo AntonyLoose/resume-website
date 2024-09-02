@@ -240,10 +240,14 @@ code {
 	box-sizing: border-box;
 }
 
-.about-detail-highlight {
-	margin: 0;
+.fun-fact-title {
 	font-weight: bold;
-	font-size: larger;
+	font-size: 50px;
+}
+
+.fun-fact-subscript {
+	margin-bottom: 5px;
+	margin-top: 50px;
 }
 
 /* stars */

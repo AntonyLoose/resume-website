@@ -54,6 +54,23 @@ export function get_RGBA_color(cssVarName, opacity = 1) {
 	return hex_to_rgba(hex, opacity);
 }
 
-export function get_years_from_date_to_now(date) {
+export class LuckyDip {
 
+	#_items;
+	#_original_items;
+
+	constructor(items) {
+		this.#_items = items;
+		this.#_original_items = items;
+	}
+
+	draw() {
+		const index = Math.floor(Math.random() * this.#_items.length);
+		const item = this.#_items[index];
+		if (this.#_items.length == 1) {
+			this.#_items = this.#_original_items;
+		}
+		this.#_items = this.#_items.filter(i => item != i);
+		return item;
+	}
 }

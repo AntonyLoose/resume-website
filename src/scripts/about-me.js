@@ -1,6 +1,7 @@
-import { fade_element_in, fade_element_out, get_hex_color, get_RGBA_color } from "./index.js";
+import { fade_element_in, fade_element_out, get_hex_color, get_RGBA_color, LuckyDip } from "./index.js";
 import { generate_random_star, apply_gravity } from "./stars.js";
 
+// SKILLS
 function create_li_element(text) {
 	const li = document.createElement("li");
 	li.textContent = text;
@@ -54,6 +55,7 @@ see_less.onclick = () => {
 	skills_list.appendChild(see_more);
 }
 
+// PROFILE
 const profile_pic = document.getElementById("profile-pic");
 const lowest_opacity = 0.05;
 let profile_pic_hidden = false;
@@ -74,6 +76,69 @@ profile_pic.onclick = () => {
 		}, 10, 0.02, lowest_opacity);
 	}
 }
+
+// FUN FACTS
+function generate_fun_fact_elements(fun_fact) {
+	const title = document.createElement("p");
+	title.id = "fun-fact-title";
+	title.className = "fun-fact-title marginless";
+	title.textContent = fun_fact.title;
+
+	const subscript = document.createElement("p")
+	subscript.id = "fun-fact-subscript";
+	subscript.className = "fun-fact-subscript subscript";
+	subscript.textContent = fun_fact.subscript;
+
+	return [title, subscript];
+}
+
+const fun_facts = [
+	{
+		title: "Mac Miller",
+		subscript: "Favourite Artist"
+	},
+	{
+		title: "Chess",
+		subscript: "Favourite Boardgame (although I'm not that good)"
+	},
+	{
+		title: "#050F36",
+		subscript: "My favourite colour"
+	},
+	{
+		title: "French Earl Grey",
+		subscript: "Favourite tea"
+	},
+	{
+		title: "Deakin Hall",
+		subscript: "Is where I lived for my first 3 years of uni"
+	}
+]
+const dip = new LuckyDip(fun_facts);
+const first_fact = dip.draw();
+const [first_title, first_subscript] = generate_fun_fact_elements(first_fact);
+const fun_fact_container = document.getElementById("fun-fact-container");
+fun_fact_container.appendChild(first_subscript);
+fun_fact_container.appendChild(first_title);
+
+setInterval(() => {
+	const next_fact = dip.draw();
+	const [new_title, new_subscript] = generate_fun_fact_elements(next_fact);
+	new_title.style.opacity = 0;
+	new_subscript.style.opacity = 0;
+	const title = document.getElementById("fun-fact-title");
+	const subscript = document.getElementById("fun-fact-subscript");
+	fade_element_out(title, () => {
+		fun_fact_container.removeChild(subscript);
+		fun_fact_container.removeChild(title);
+		fun_fact_container.appendChild(new_subscript);
+		fun_fact_container.appendChild(new_title);
+		fade_element_in(new_subscript, () => null, 10, 0.008);
+		fade_element_in(new_title, () => null, 10, 0.008);
+	}, 10, 0.008);
+	fade_element_out(subscript, () => null, 10, 0.008);
+}, 8000)
+
 
 // CHART
 const ctx = document.getElementById('chart');
