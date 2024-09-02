@@ -1,4 +1,4 @@
-import { fade_element_in, fade_element_out, get_hex_color, get_RGBA_color, LuckyDip } from "./index.js";
+import { fade_element_in, fade_element_out, fade_multiple_elements_in, fade_multiple_elements_out, get_hex_color, get_RGBA_color, LuckyDip } from "./index.js";
 import { generate_random_star, apply_gravity } from "./stars.js";
 
 // SKILLS
@@ -106,7 +106,7 @@ const fun_facts = [
 		subscript: "My favourite colour"
 	},
 	{
-		title: "French Earl Grey",
+		title: "Ceylon",
 		subscript: "Favourite tea"
 	},
 	{
@@ -132,15 +132,13 @@ setInterval(() => {
 	new_subscript.style.opacity = 0;
 	const title = document.getElementById("fun-fact-title");
 	const subscript = document.getElementById("fun-fact-subscript");
-	fade_element_out(title, () => {
+	fade_multiple_elements_out([title, subscript], () => {
 		fun_fact_container.removeChild(subscript);
 		fun_fact_container.removeChild(title);
 		fun_fact_container.appendChild(new_subscript);
 		fun_fact_container.appendChild(new_title);
-		fade_element_in(new_subscript, () => null, 10, 0.008);
-		fade_element_in(new_title, () => null, 10, 0.008);
+		fade_multiple_elements_in([new_title, new_subscript], () => null, 10, 0.008);
 	}, 10, 0.008);
-	fade_element_out(subscript, () => null, 10, 0.008);
 }, 8000)
 
 // CHART
