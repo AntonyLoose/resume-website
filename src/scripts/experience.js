@@ -69,12 +69,12 @@ function show_references() {
 	ilearn_ref.innerHTML = ilearn_text_content;
 	ilearn_ref.className = "subscript marginless";
 
-	const intake_ref = document.getElementById("intake_ref");
+	const intake_ref = document.getElementById("intake-ref");
 	const intake_text_conent = "nabeeb2<!-- 123stopspam -->000@g<span class='spam-protection'>Nice try buddy</span>mai<!-- 123stopspam -->l.com";
 	intake_ref.innerHTML = intake_text_conent;
 	intake_ref.className = "subscript marginless";
 
-	const woolies_ref = document.getElementById("woolies_ref");
+	const woolies_ref = document.getElementById("woolies-ref");
 	const woolies_text_content = "042<!-- 123stopspam -->6 16<span class='spam-protection'>No, I don't want you messaging my ex-manager saying this website is out of date, thanks and goodbye.</span>9 41<!-- 123stopspam -->7";
 	woolies_ref.innerHTML = woolies_text_content;
 	woolies_ref.className = "subscript marginless";
