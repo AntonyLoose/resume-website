@@ -120,7 +120,8 @@ code {
 .h-stack-wrap,
 .h-stack-align-center,
 .h-stack-justify-center,
-.h-stack-centered {
+.h-stack-centered,
+.h-stack-spaced {
 	display: flex;
 	gap: 10px;
 }
@@ -140,6 +141,10 @@ code {
 .h-stack-centered {
 	align-items: center;
 	justify-content: center;
+}
+
+.h-stack-spaced {
+	justify-content: space-between;
 }
 
 .vertical-divider {
@@ -233,6 +238,12 @@ code {
 	z-index: -1;
 	padding: 10px;
 	box-sizing: border-box;
+}
+
+.about-detail-highlight {
+	margin: 0;
+	font-weight: bold;
+	font-size: larger;
 }
 
 /* stars */
