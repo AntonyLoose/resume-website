@@ -99,7 +99,7 @@ const fun_facts = [
 	},
 	{
 		title: "Chess",
-		subscript: "Favourite Boardgame (although I'm not that good)"
+		subscript: "Favourite Boardgame (I'm not vey good 😅)"
 	},
 	{
 		title: "#050F36",
@@ -111,7 +111,11 @@ const fun_facts = [
 	},
 	{
 		title: "Deakin Hall",
-		subscript: "Is where I lived for my first 3 years of uni"
+		subscript: "I lived for 3 years in"
+	},
+	{
+		title: "Adelaide",
+		subscript: "I grew up in"
 	}
 ]
 const dip = new LuckyDip(fun_facts);
@@ -138,7 +142,6 @@ setInterval(() => {
 	}, 10, 0.008);
 	fade_element_out(subscript, () => null, 10, 0.008);
 }, 8000)
-
 
 // CHART
 const ctx = document.getElementById('chart');

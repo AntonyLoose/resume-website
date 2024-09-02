@@ -3,7 +3,7 @@
 	--background: #383838;
 	--subscript: #BFBFBF;
 	--code-background: #595959;
-	--primary: #FF8345;
+	--primary: #5168C2;
 
 }
 
@@ -243,11 +243,12 @@ code {
 .fun-fact-title {
 	font-weight: bold;
 	font-size: 50px;
+	line-height: 50px;
 }
 
 .fun-fact-subscript {
-	margin-bottom: 5px;
 	margin-top: 50px;
+	margin-bottom: 0;
 }
 
 /* stars */
