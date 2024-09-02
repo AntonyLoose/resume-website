@@ -1,4 +1,4 @@
-import { fade_img_in, fade_img_out } from "./index.js";
+import { fade_element_in, fade_element_out } from "./index.js";
 
 // Constants
 const landing_background_images = [
@@ -22,10 +22,10 @@ function swap_current_image() {
 	new_background_img.style.position = "absolute";
 	container.appendChild(new_background_img);
 
-	fade_img_out(curr_background_img, () => {
+	fade_element_out(curr_background_img, () => {
 		container.removeChild(curr_background_img);
 	}, 10, 0.005);
-	fade_img_in(new_background_img, () => {
+	fade_element_in(new_background_img, () => {
 		new_background_img.id = "background";
 	}, 10, 0.005);
 }

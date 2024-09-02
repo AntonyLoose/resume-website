@@ -1,4 +1,4 @@
-import { fade_img_in, fade_img_out, getHexColor, getRGBAColor } from "./index.js";
+import { fade_element_in, fade_element_out, get_hex_color, get_RGBA_color } from "./index.js";
 import { generate_random_star, apply_gravity } from "./stars.js";
 
 function create_li_element(text) {
@@ -62,13 +62,13 @@ profile_pic.onclick = () => {
 	if (animating) return;
 	if (!profile_pic_hidden) {
 		animating = true;
-		fade_img_out(profile_pic, () => {
+		fade_element_out(profile_pic, () => {
 			profile_pic_hidden = true;
 			animating = false;
 		}, 10, 0.02, lowest_opacity);
 	} else {
 		animating = true;
-		fade_img_in(profile_pic, () => {
+		fade_element_in(profile_pic, () => {
 			profile_pic_hidden = false;
 			animating = false;
 		}, 10, 0.02, lowest_opacity);
@@ -82,8 +82,8 @@ const data = {
 	datasets: [{
 		label: "Skills Breakdown",
 		data: [95, 80, 90, 70, 75, 65],
-		backgroundColor: getRGBAColor("--primary", 0.3),
-		borderColor: getRGBAColor("--primary")
+		backgroundColor: get_RGBA_color("--primary", 0.3),
+		borderColor: get_RGBA_color("--primary")
 	}]
 }
 
@@ -92,23 +92,23 @@ const options = {
 		r: {
 			suggestedMin: 0,
 			angleLines: {
-				color: getRGBAColor("--subscript", 0.6)
+				color: get_RGBA_color("--subscript", 0.6)
 			},
 			grid: {
-				color: getRGBAColor("--subscript", 0.2)
+				color: get_RGBA_color("--subscript", 0.2)
 			},
 			pointLabels: {
 				font: {
 					size: 13
 				},
-				color: getHexColor("--subscript"),
+				color: get_hex_color("--subscript"),
 			},
 			ticks: {
 				callback: () => "",
 				font: {
 					size: 13,
 				},
-				color: getHexColor("--subscript"),
+				color: get_hex_color("--subscript"),
 				backdropColor: "transparent"
 			}
 		}
