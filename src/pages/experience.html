@@ -27,13 +27,13 @@
 				<div>
 					<p class="subscript marginless">ABOUT THE PROJECT</p>
 					<p>
-						In December 2023 I started developing an Auslan spell generation package
-						for Monash University's Department of Human Centred Computing. The
-						package translates text prompts into interactive 3D animations, engaging
-						the user and enhancing the learning experience. As this project is an
-						npm package, it can be integrated into any website. We are still in the
-						process of alpha testing; thus I cannot include a live demo on this
-						website; however, I am optimistic this should change shortly, so
+						In December 2023, I started developing an Auslan spell generation
+						package for Monash University's Department of Human Centred Computing.
+						The package translates text prompts into interactive 3D animations,
+						engaging the user and enhancing the learning experience. As this project
+						is an npm package, it can be integrated into any website. We are still
+						in the process of alpha testing; thus I cannot include a live demo on
+						this website; however, I am optimistic this should change shortly, so
 						bookmark this website if you are interested :)
 						<br>
 						<br>
@@ -48,7 +48,7 @@
 						The package was designed to be highly configurable, allowing any
 						developer to make it work for their use case. Additionally, for when
 						configuration fails, the package is highly extendable, meaning if a
-						feature does not exist you can either fork the repository or make a PR.
+						feature does not exist, you can either fork the repository or make a PR.
 						<br>
 						<br>
 						Plans for the future include: integrating the package into <a
@@ -74,27 +74,27 @@
 						This was my first time creating a package for other developers to use;
 						it forced me to think carefully about how others would use the code, and
 						thus how the API should be designed to accommodate these users. I
-						believe this experience greatly improved my ability to design software
-						architecture, as well as differentiate between good and bad design.
-						Notably, the package is ~2500 lines of code, this is significantly less
-						than other projects I have completed; however, the effort spent on each
-						line is much greater, I dedicated time to code reviews and analysis to
-						simplify and reduce the code base as less code is better, this is
-						especially true for packages - I'm probably not going to use your
-						package if it increases cold load times. Speaking of code reviews, I
-						also learned a lot about the workflow and development cycle that works
-						well for me - create janky but working iterations of features to get an
-						idea of the problem space, design a more elegant solution, bring the
-						design to life with code, review, and finalise. A specific example of
-						this approach, that I am proud of, is the code for handling animations.
-						I had programmed a simple solution that worked for most cases but had
-						some major issues, this first iteration helped me understand the problem
-						and brainstorm solutions. Eventually, I created a data structure and
-						class that handled the animations perfectly, even allowing me to scrub
-						the animation (similar to a YouTube video) this is especially cool
-						because we are playing and blending multiple animations, so something
-						like <code>mixer.update(seconds)</code> (the usual approach) would not
-						work as the blending would break.
+						believe this has experience greatly improved my ability to design
+						software architecture, as well as differentiate between good and bad
+						design. Notably, the package is ~2500 lines of code, this is
+						significantly less than other projects I have completed; however, the
+						effort spent on each line is much greater. I dedicated time to code
+						reviews and analysis to simplify and reduce the code base as less code
+						is better, this is especially true for packages - I'm probably not going
+						to use your package if it increases cold load times. Speaking of code
+						reviews, I also learned a lot about the workflow and development cycle
+						that works well for me - create janky but working iterations of features
+						to get an idea of the problem space, design a more elegant solution,
+						bring the design to life with code, review, and finalise. A specific
+						example of this approach, that I am proud of, is the code for handling
+						animations. I had programmed a simple solution that worked for most
+						cases but had some major issues, this first iteration helped me
+						understand the problem and brainstorm solutions. Eventually, I created a
+						data structure and class that handled the animations perfectly, even
+						allowing me to scrub the animation (similar to a YouTube video) this is
+						especially cool because we are playing and blending multiple animations,
+						so something like <code>mixer.update(seconds)</code> (the usual
+						approach) would not work as the blending would break.
 						<br>
 						<br>
 						The last thing I will say is that I really enjoyed working on this
