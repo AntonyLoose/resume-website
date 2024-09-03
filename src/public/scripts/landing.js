@@ -1,9 +1,9 @@
 import { fade_element_in, fade_element_out } from "./index.js";
 
 const landing_background_images = [
-	"../public/images/melbourne-night.jpg",
-	"../public/images/woodside.jpg",
-	"../public/images/murray-river-night.jpeg",
+	"/images/melbourne-night.jpg",
+	"/images/woodside.jpg",
+	"/images/murray-river-night.jpeg",
 ]
 
 function swap_current_image() {

@@ -9,7 +9,7 @@
 
 @font-face {
 	font-family: "cyber-punk";
-	src: url("./public/fonts/Nasa21-l23X.ttf");
+	src: url("/fonts/Nasa21-l23X.ttf");
 }
 
 ::-webkit-scrollbar {
