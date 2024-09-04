@@ -79,6 +79,13 @@ intake_ref.onclick = () => {
 	intake_ref.className = "subscript marginless";
 }
 
+const autom8_ref = document.getElementById("cosywrap-ref");
+autom8_ref.onclick = () => {
+	const autom8_text_content = "grah<!-- 123stopspam -->am@35<span class='spam-protection'>Go away please.</span>007.<!-- 123stopspam -->com.au";
+	autom8_ref.innerHTML = autom8_text_content;
+	autom8_ref.className = "subscript marginless";
+}
+
 const woolies_ref = document.getElementById("woolies-ref");
 woolies_ref.onclick = () => {
 	const woolies_text_content = "042<!-- 123stopspam -->6 16<span class='spam-protection'>No, I don't want you messaging my ex-manager saying this website is out of date, thanks and goodbye.</span>9 41<!-- 123stopspam -->7";
