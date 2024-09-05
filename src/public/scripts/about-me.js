@@ -27,6 +27,7 @@ const hidden_skills = [
 	"Kubernetes",
 	"SQL",
 	"Python",
+	"MongoDB",
 	"c",
 	"Arduino",
 	"Swift"
