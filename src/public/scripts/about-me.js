@@ -100,7 +100,7 @@ const fun_facts = [
 	},
 	{
 		title: "Chess",
-		subscript: "Favourite Boardgame, despite it being my favourite I'm not vey good 😅"
+		subscript: "Favourite Boardgame"
 	},
 	{
 		title: "#050F36",
