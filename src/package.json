@@ -4,7 +4,7 @@
   "description": "My resume website",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "format": "npx prettier . --write"
   },
   "author": "Antony Loose",
   "license": "ISC",
