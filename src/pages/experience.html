@@ -24,40 +24,38 @@
           <div>
             <p class="subscript marginless">ABOUT THE PROJECT</p>
             <p>
-              In December 2023, I started developing an Auslan spell generation
-              package for Monash University's Department of Human Centred
-              Computing. The package translates text prompts into interactive 3D
-              animations, engaging the user and enhancing the learning
-              experience. As this project is an npm package, it can be
-              integrated into any website. We are still in the process of alpha
-              testing; thus I cannot include a live demo on this website;
-              however, I am optimistic this should change shortly, so bookmark
-              this website if you are interested :)
-              <br />
-              <br />
-              By default, the package includes UI controls (that can be hidden
-              using the API) which allow users to interact with the 3D models.
-              The hands can also be programmatically controlled through the API,
-              providing granular control over the animations. Additionally, all
-              styles can be overridden by developers using the package; for
-              simplicity, there is also the option to only provide a colour
-              theme.
-              <br />
-              <br />
-              The package was designed to be highly configurable, allowing any
-              developer to make it work for their use case. Additionally, for
-              when configuration fails, the package is highly extendable,
-              meaning if a feature does not exist, you can either fork the
-              repository or make a PR.
-              <br />
-              <br />
-              Plans for the future include: integrating the package into <a
-                class="link"
-                href="https://auslan.org.au/"
-                >Sign Bank</a
-              >, supporting more languages, and creating an educational finger
-              spelling web app.
+              I have developed, and continue to develop, an Auslan finger
+              spelling npm web package. This package translates text to
+              interactive 3D animations.
             </p>
+
+            <p>
+              <code>auslan-spell-web-package</code> primary features include:
+            </p>
+
+            <ul>
+              <li>
+                orbit controls - panning, zooming, and rotating the camera
+              </li>
+              <li>
+                playback controls - speed, play/pause, restart, clear, animation
+                scrubber
+              </li>
+              <li>
+                themes - applies to all components (with the same
+                <code>auslanID</code>), and the hands if no texture is applied
+              </li>
+              <li>
+                keyboard shortcuts - everything, excluding sophisticated camera
+                movement, can be done with the keyboard
+              </li>
+            </ul>
+
+            <p>
+              I have deployed a password-protected alpha on Nectar (a research
+              cloud) using an Ubuntu VM running an nginx server.
+            </p>
+
             <p><b>Tech stack:</b></p>
             <ul>
               <li>Three.js</li>
@@ -71,39 +69,100 @@
             </ul>
             <br />
             <p class="subscript">ABOUT ME</p>
+            <p>There are three main aspects of this project I am proud of:</p>
+
+            <h3>1. The animation system</h3>
+
             <p>
-              This was my first time creating a package for other developers to
-              use; it forced me to think carefully about how others would use
-              the code, and thus how the API should be designed to accommodate
-              these users. I believe this has experience greatly improved my
-              ability to design software architecture, as well as differentiate
-              between good and bad design. Notably, the package is ~2500 lines
-              of code, this is significantly less than other projects I have
-              completed; however, the effort spent on each line is much greater.
-              I dedicated time to code reviews and analysis to simplify and
-              reduce the code base as less code is better, this is especially
-              true for packages - I'm probably not going to use your package if
-              it increases cold load times. Speaking of code reviews, I also
-              learned a lot about the workflow and development cycle that works
-              well for me - create janky but working iterations of features to
-              get an idea of the problem space, design a more elegant solution,
-              bring the design to life with code, review, and finalise. A
-              specific example of this approach, that I am proud of, is the code
-              for handling animations. I had programmed a simple solution that
-              worked for most cases but had some major issues, this first
-              iteration helped me understand the problem and brainstorm
-              solutions. Eventually, I created a data structure and class that
-              handled the animations perfectly, even allowing me to scrub the
-              animation (similar to a YouTube video) this is especially cool
-              because we are playing and blending multiple animations, so
-              something like <code>mixer.update(seconds)</code> (the usual
-              approach) would not work as the blending would break.
-              <br />
-              <br />
-              The last thing I will say is that I really enjoyed working on this
-              project as it became clear that my years of study and work have
-              culminated in, if I do say so myself, a rather good programmer.
+              Our animation system precomputes the exact scheduling of each
+              animation in a word. This sounds simple; however, due to custom
+              transitions, the problem is quite complex.
             </p>
+
+            <p>
+              Our solution is a sophisticated approach that creates transition
+              actions between the key intervals (crucial frames that cannot be
+              skipped) of sequential actions. We apply collision detection and
+              avoidance to create maximally smooth animations, while allowing
+              frame-perfect scrubbing. Additionally, the smoothness of the
+              animation is configurable: developers using the package can easily
+              adjust a single variable, <code>smoothnessFactor</code>.
+            </p>
+
+            <p>
+              The APIs used to interact with the animation system are
+              extendable. A developer can create their own hands/scene
+              controllers if they require specialised functionality, for
+              example, supporting a niche file type.
+            </p>
+
+            <h3>2. The custom component library</h3>
+
+            <p>The package includes a component library with the following:</p>
+
+            <ul>
+              <li>
+                <strong>A base component:</strong> this has all the generic
+                methods every component needs.
+              </li>
+              <li>
+                <strong>A styled component:</strong> this contains a HTML
+                <code>style</code> element with CSS variables for all the theme
+                values. Additionally, this class sets up a theme subscription
+                based on its internal <code>auslanID</code>, meaning any class
+                extending this will be connected to a global theme.
+              </li>
+              <li>
+                <strong>Core components:</strong> these are the generic
+                components most UIs need — buttons, inputs, sliders, etc.
+              </li>
+              <li>
+                <strong>Specialised components:</strong> these components
+                interact directly with the animation system — prompt input, play
+                button, hands container, etc.
+              </li>
+            </ul>
+
+            <p>
+              The default usage of this package includes all specialised
+              components neatly positioned; however, the modularity and
+              extendability of the component suite allow for practically any use
+              case. For example, a developer building a quiz application would
+              choose to omit the prompt input and display, and may choose to
+              omit the playback controls (speed, scrubbing, etc.) to increase
+              difficulty.
+            </p>
+
+            <p>
+              The components are written using native DOM APIs. This makes the
+              components compatible with all browser-based frameworks, which is
+              especially important as our quiz application is being written in
+              React.
+            </p>
+
+            <h3>3. High-quality documentation</h3>
+
+            <p>
+              The package includes a README with basic usage and examples. This
+              will suffice for the majority of the package's users; however, for
+              more complicated use cases, there are detailed JSDOCS that can be
+              generated by cloning the repository and running
+              <code>npm run docs</code>.
+            </p>
+
+            <hr />
+
+            <p>
+              We have exciting plans for the future, mainly finger spelling
+              recognition, and full word sign generation. I believe these
+              projects will greatly improve web accessibility for deaf users;
+              however, due to limited monetisation capabilities, investment in
+              these projects will likely be limited. Therefore, to enhance web
+              technologies for everyone, I will continue to develop, as an
+              open-source contributor, my projects and the future Auslan
+              projects.
+            </p>
+
             <p><b>Skills developed:</b></p>
             <ul>
               <li>Project management</li>
