@@ -66,6 +66,7 @@ p {
 
 li + li {
   margin-top: 10px;
+  line-height: 30px;
 }
 
 video {
