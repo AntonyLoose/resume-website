@@ -21,14 +21,15 @@ const skills = [
     "HTML",
     "CSS",
     "THREE.js",
-    "React / React Native",
-    "Next.js",
+    "React",
+    "Express",
     "SQL",
+    "React Native"
 ];
 const hidden_skills = [
     "npm",
     "Webpack",
-    "express",
+    "Express",
     "nginx",
     "Linux",
     "AWS",
@@ -177,11 +178,11 @@ setTimeout(swap_fun_fact, 5000);
 // CHART
 const ctx = document.getElementById("chart");
 const data = {
-    labels: skills,
+    labels: skills.slice(0, 6),
     datasets: [
         {
             label: "Skills Breakdown",
-            data: [95, 80, 90, 90, 75, 65],
+            data: [95, 80, 90, 90, 75, 80],
             backgroundColor: get_RGBA_color("--primary", 0.3),
             borderColor: get_RGBA_color("--primary"),
         },
