@@ -1,0 +1,178 @@
+:root {
+    --text: #e3e3e3;
+    --background: #303136;
+    --subscript: #bfbfbf;
+    --code-background: #595959;
+    --primary: #5168c2;
+
+    --large-hgap: 40px;
+    --hgap: 20px;
+    --vgap: 20px;
+}
+
+html,
+body {
+    height: fit-content;
+    scrollbar-gutter: stable;
+}
+
+body {
+    margin: 0px;
+    padding-block: 100px;
+    padding-inline: 200px;
+    box-sizing: border-box;
+    color: var(--text);
+    font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        Segoe UI,
+        Roboto,
+        Oxygen,
+        Ubuntu,
+        Cantarell,
+        Open Sans,
+        Helvetica Neue,
+        sans-serif;
+    background-color: var(--background);
+    height: 100%;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar) transparent;
+}
+
+main {
+    width: 100%;
+}
+
+h1 {
+    font-size: 4rem;
+    margin: 0px;
+}
+
+h2 {
+    font-size: 2rem;
+    margin: 0px;
+}
+
+a {
+    color: var(--subscript);
+    transition: filter 0.3s ease;
+    font-weight: 300;
+    /* No highlighting */
+}
+
+a:hover {
+    filter: brightness(85%);
+}
+
+a:active {
+    filter: brightness(70%);
+}
+
+p {
+    line-height: 30px;
+    font-weight: 200;
+}
+
+.text-selected {
+    font-weight: bolder;
+}
+
+.vgap {
+    height: var(--vgap);
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    gap: var(--hgap);
+    width: 100%;
+}
+
+.headshot {
+    object-fit: cover;
+    height: 175px;
+    width: 175px;
+    border-radius: 20px;
+}
+
+.hstack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--hgap);
+    align-items: center;
+}
+
+.chip {
+    border: 1px solid var(--subscript);
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.typescript {
+    border-color: #3178C6;
+    color: #3178C6;
+}
+
+.html {
+    border-color: #e34f26;
+    color: #e34f26;
+}
+
+.css {
+    border-color: #1572b6;
+    color: #1572b6;
+}
+
+.node {
+    border-color: #339933;
+    color: #339933;
+}
+
+.threejs {
+    border-color: #ffffff;
+    color: #ffffff;
+}
+
+.android {
+    border-color: #3ddc84;
+    color: #3ddc84;
+}
+
+.react {
+    border-color: #61dafb;
+    color: #61dafb;
+}
+
+.react-native {
+    border-color: #61dafb;
+    color: #61dafb;
+}
+
+.linux {
+    border-color: #fcc624;
+    color: #fcc624;
+}
+
+.nginx {
+    border-color: #009639;
+    color: #009639;
+}
+
+.aws-lambda {
+    border-color: #ff9900;
+    color: #ff9900;
+}
+
+.aws-dynamodb {
+    border-color: #4053d6;
+    color: #4053d6;
+}
+
+.aws-cloudwatch {
+    border-color: #c851ff;
+    color: #c851ff;
+}

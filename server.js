@@ -8,25 +8,17 @@ app.use(express.static("public"));
 app.get("/", (_, res) => {
     res.status(200);
     res.set("Content-Type", "text/html");
-    res.sendFile(path.join(__dirname, "/pages/landing.html"));
-});
-
-app.get("/about-me", (_, res) => {
-    res.status(200);
-    res.set("Content-Type", "text/html");
     res.sendFile(path.join(__dirname, "/pages/about-me.html"));
 });
 
-app.get("/experience", (_, res) => {
+app.get("/resume", (_, res) => {
     res.status(200);
     res.set("Content-Type", "text/html");
-    res.sendFile(path.join(__dirname, "/pages/experience.html"));
-});
-
-app.get("/education", (_, res) => {
-    res.status(200);
-    res.set("Content-Type", "text/html");
-    res.sendFile(path.join(__dirname, "/pages/education.html"));
+    res.sendFile(path.join(__dirname, "/public/resume.pdf"), {
+        headers: {
+            "Content-Type": "application/pdf"
+        }
+    });
 });
 
 app.listen(PORT, () => {
