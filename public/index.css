@@ -94,7 +94,7 @@ p {
     object-fit: cover;
     height: 175px;
     width: 175px;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .hstack {
