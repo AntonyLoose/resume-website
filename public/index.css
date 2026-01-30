@@ -107,7 +107,8 @@ p {
 .chip {
     border: 1px solid var(--subscript);
     border-radius: 20px;
-    padding: 10px;
+    padding-inline: 20px;
+    padding-block: 7px;
     display: flex;
     justify-content: center;
     align-items: center;
