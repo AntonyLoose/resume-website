@@ -85,6 +85,7 @@ p {
 
 .header {
     display: flex;
+    flex-wrap: wrap;
     gap: var(--hgap);
     width: 100%;
 }
@@ -175,4 +176,17 @@ p {
 .aws-cloudwatch {
     border-color: #c851ff;
     color: #c851ff;
+}
+
+@media (max-width: 1000px) {
+    body {
+        padding-block: 20px;
+        padding-inline: 20px;
+    }
+}
+
+@media (max-width: 670px) {
+    .headshot {
+        display: none;
+    }
 }
