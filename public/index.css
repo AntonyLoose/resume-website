@@ -146,6 +146,11 @@ p {
     color: #3ddc84;
 }
 
+.kotlin {
+    border-color: #7F52FF;
+    color: #7F52FF;
+}
+
 .react {
     border-color: #61dafb;
     color: #61dafb;
@@ -166,19 +171,9 @@ p {
     color: #009639;
 }
 
-.aws-lambda {
+.aws {
     border-color: #ff9900;
     color: #ff9900;
-}
-
-.aws-dynamodb {
-    border-color: #6473d6;
-    color: #6473d6;
-}
-
-.aws-cloudwatch {
-    border-color: #c851ff;
-    color: #c851ff;
 }
 
 @media (max-width: 1200px) {
