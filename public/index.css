@@ -1,6 +1,6 @@
 :root {
     --text: #e3e3e3;
-    --background: #303136;
+    --background: #1e1e21;
     --subscript: #bfbfbf;
     --code-background: #595959;
     --primary: #5168c2;
@@ -112,6 +112,8 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
 .typescript {
@@ -170,8 +172,8 @@ p {
 }
 
 .aws-dynamodb {
-    border-color: #4053d6;
-    color: #4053d6;
+    border-color: #6473d6;
+    color: #6473d6;
 }
 
 .aws-cloudwatch {
