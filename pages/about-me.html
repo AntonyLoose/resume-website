@@ -23,12 +23,17 @@
                 <div class="hstack">
                     <a href="https://github.com/AntonyLoose">GitHub</a>
                     <a href="https://www.linkedin.com/in/antony-loose-41011428b/">LinkedIn</a>
-                    <a href="mailto:antony35007@gmail.com">antony35007@gmail.com</a>
+                    <a id="email-link">Email me</a>
                 </div>
             </div>
         </div>
 
         <div class="vgap"></div>
+
+        <p>
+            I currently work at <b>Monash University</b> developing software for research teams, and at
+            <a href="https://www.hailo.co/" class="text-selected">Hailo</a> as a full-stack Android engineer.
+        </p>
 
         <p>
             I’m a Melbourne based software engineer with 3 years of experience in full-stack <b>web development</b> and,
@@ -40,8 +45,8 @@
         <p>
             My <b>technical interests</b> include <b>package development</b> (particularly npm), vanilla web development
             with
-            <b>TypeScript</b>, and building novel, purpose-driven applications. I value simple, high-quality, efficient,
-            and effective solutions, and have applied this approach in projects like
+            <b>TypeScript</b>, and building novel, purpose-driven applications. I value simple, high-quality, and
+            effective solutions, and have applied this approach in projects like
             <a href="https://alpha.auslan-spell-web-package.cloud.edu.au/" class="text-selected">Auslan Spell</a>.
 
             I’m also strongly motivated to work on <b>socially impactful software</b>, particularly applications focused
@@ -72,6 +77,14 @@
             <div class="chip aws-cloudwatch">AWS CloudWatch</div>
         </div>
     </main>
+
+    <script>
+        const user = "antony35007";
+        const domain = "gmail.com";
+        const link = document.getElementById("email-link");
+
+        link.href = `mailto:${user}@${domain}`;
+    </script>
 </body>
 
 </html>
