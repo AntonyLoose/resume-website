@@ -4,6 +4,7 @@
   "description": "My resume website",
   "main": "server.js",
   "scripts": {
+    "dev": "node server.js",
     "format": "npx prettier . --write"
   },
   "author": "Antony Loose",
